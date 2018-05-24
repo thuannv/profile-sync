@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#FAFBFF"
+              android:fitsSystemWindows="true"
+              android:orientation="vertical">
+
+    <!-- Toolbar layout-->
+    <include
+        layout="@layout/toolbar_conversation_home" />
+
+    <!--<View-->
+        <!--android:id="@+id/list_divider"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:layout_marginTop="24dp"-->
+        <!--android:background="#e8e8e9"-->
+        <!--android:visibility="gone"/>-->
+
+    <!-- Conversation list -->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/conversation_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+    android:layout_marginTop="24dp"
+        android:background="@color/white" />
+</LinearLayout>

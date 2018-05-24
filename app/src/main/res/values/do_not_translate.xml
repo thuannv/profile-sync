@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE resources[<!ENTITY appname "360Live">]>
+<resources>
+    <string name="app_name" translatable="false">&appname;</string>
+    <!-- Facebook -->
+    <string name="facebook_app_id" translatable="false">362515897442878</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb362515897442878</string>
+
+    <!-- Google and firebase -->
+    <string name="google_client_id" translatable="false">633049871488-20njkms0kr89jha2trjpc0it4o360709.apps.googleusercontent.com</string>
+    <string name="sender_id" translatable="false">633049871488</string>
+
+    <!-- appsflyer -->
+    <string name="appID" translatable="false">358034428089559693</string>
+    <string name="zaloAppID" translatable="false">1794460408891055915</string>
+    <string name="zaloScheme" translatable="false">zalo-1794460408891055915</string>
+    <string name="appsflyer_tfa_key" translatable="false">aT3gPUMaWo9bNxtxtPLcdk</string>
+
+    <string name="profile_user_id" translatable="false">\@%1$s</string>
+    <string name="display_user_id" translatable="false">ID: %1$s</string>
+
+    <string name="level" translatable="false">Level %1$d</string>
+
+    <string name="popup_level_display" translatable="false">Lv%1$d</string>
+    <string name="profile_level_vip_display" translatable="false">Vip</string>
+    <string name="buy_vip_title" translatable="false">VIP</string>
+
+    <string name="drawer_opened" translatable="false">Drawer opened</string>
+    <string name="drawer_closed" translatable="false">Drawer closed</string>
+
+    <string name="switch_variant_hit_count" translatable="false">Nhấn thêm %1$d lần nữa để chuyển môi trường</string>
+    <string name="admin" translatable="false">Admin</string>
+
+    <string name="screenshot_ban" translatable="false">Ban</string>
+    <string name="screenshot_handle_account_banned" translatable="false">Xử lý tài khoản vi phạm</string>
+    <string name="screenshot_id_banned" translatable="false">Id vi phạm</string>
+    <string name="screenshot_rule_banned" translatable="false">Nội dung</string>
+    <string name="screenshot_strategy_banned" translatable="false">Hình thức</string>
+    <string name="screenshot_ban_streamer" translatable="false">Xử lý phi vạm</string>
+    <string name="ban_streamer_success" translatable="false">Ban Thành Công</string>
+    <string name="ban_streamer_failed" translatable="false">Ban không thành công</string>
+
+    <string name="header_layout_event_progress_bar" translatable="false">%1$s/%2$s</string>
+</resources>

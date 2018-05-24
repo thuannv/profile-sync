@@ -1,0 +1,88 @@
+syntax = "proto3";
+
+package protobuf;
+option java_package = "com.vng.datasync.protobuf";
+option java_outer_classname = "ZLive";
+
+enum Cmd {
+    DEFAULT = 0;
+    NOTIFY = 1000;
+    SEND_PRIVATE_CHAT_DELIVERED = 1080;
+    SEND_PRIVATE_CHAT_SEEN = 1090;
+    CHAT_PRIVATE = 1100;
+    CHAT_PRIVATE_OFFLINE_RECEIVED_CONFIRM = 1110;
+    CHAT_PRIVATE_REQUEST_UNREAD = 1120;
+    CHAT_PRIVATE_RECEIVED_CONFIRM = 1130;
+}
+
+enum NotifySubCmd {
+    SUB_DEFAULT = 0;
+    SUB_SUCCESS = 1;
+    SUB_ERROR = 2;
+
+    SUB_PRIVATE_CHAT = 1000;
+    SUB_PRIVATE_CHAT_BLOCKED = 1001;
+    SUB_PRIVATE_CHAT_DELIVERED = 1100;
+    SUB_PRIVATE_CHAT_SEEN = 1200;
+
+    SUB_PRIVATE_CHAT_UNREAD = 1500;
+    SUB_PRIVATE_CHAT_UNREAD_RESPONSE = 1600;
+    SUB_TOTAL_FRIEND_REQUEST = 1700;
+}
+
+message ZAPIMessage {
+    int32 requestId = 1;
+    int32 cmd = 2;
+    int32 subCmd = 3;
+    int64 timestamp = 4;
+    bytes data = 5;
+    int32 userId = 6;
+    string deviceId = 7;
+    int32 platform = 8;
+    string platformVersion = 9;
+    string deviceName = 10;
+    string appVersion = 11;
+    int32 network = 12;
+    string clientIp = 13;
+}
+
+enum ChannelType {
+    ANONYMOUS = 0;
+    FRIEND = 1;
+    OFFICIAL_IN_HOUSE = 2;
+}
+
+message ZAPIPrivateChatItem {
+    int32 messageId = 1;
+    int32 ownerId = 2;
+    int32 receiverId = 3;
+    int32 channelId = 4;
+    string message = 5;
+    int64 createdTime = 6;
+    int32 messageType = 7;
+    int64 attachmentId = 8;
+    int32 attachmentType = 9;
+    string ownerAvatar = 10;
+    string ownerDisplayName = 11;
+    int32 channelType = 12;
+    string jsonData = 13;
+}
+
+
+message ZAPIPrivateChatChannelMetaData {
+    int32 ownerId = 1;
+    int32 receiverId = 2;
+    int32 channelId = 3;
+    string channelAvatar = 4;
+    string channelName = 5;
+    bool isFriend = 6;
+    int32 channelType = 7;
+}
+
+message ZAPIPrivateChatUnread {
+    repeated ZAPIPrivateChatChannelMetaData chatChannels = 1;
+}
+
+message ZAPIPrivateChatUnreadResponse {
+    repeated ZAPIPrivateChatItem chatItems = 1;
+}

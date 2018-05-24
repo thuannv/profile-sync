@@ -1,0 +1,760 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE resources[<!ENTITY appname "datasync">]>
+<resources>
+    <string name="splash_screen_credit_text">Power by &appname; - Version %1$s</string>
+    <string name="error_load_app_configs_failed">Failed to connect to server</string>
+    <string name="policy">Login means you agree &lt;a href=\"https://360live.vn/en/policy\"&gt;Terms of use, Privacy Policy&lt;/a&gt; powered by &appname;</string>
+    <string name="select_language">Select your language</string>
+    <string name="login_method">Login</string>
+    <string name="policy_title">Terms of use and Privacy policy</string>
+    <string name="google_connection_error">Cannot connect to Google Service.</string>
+    <string name="cancel_sign_in_gg">Cancel login Google+.</string>
+    <string name="message_login_fail">Failed to login %1$s. Error: %2$s.</string>
+    <string name="google_plus">Google+</string>
+    <string name="no_network_connection">No network connection</string>
+    <!--translate-->
+    <string name="slow_network_connection">Please check your network connection and try again.</string>
+    <!---->
+    <string name="cancel_login_facebook">Login cancelled</string>
+    <string name="login_facebook_fail">Failed to login</string>
+    <!--translate-->
+    <string name="login_progress">Login&#8230;</string>
+    <!---->
+    <string name="message_cannot_connect_server">Failed to connect to server</string>
+    <string name="pressed_back_to_exit">Press back again to quit</string>
+
+    <!--Tab profile-->
+    <string name="friend_count">Friends</string>
+    <string name="following_count">Following</string>
+    <string name="follow">Follow</string>
+    <string name="following">Following</string>
+    <string name="fan_count">Fans</string>
+    <string name="converse">Chat</string>
+    <string name="bio">Bio: </string>
+    <string name="work">Job: </string>
+    <string name="education">Education: </string>
+    <string name="social_link">Link: </string>
+    <string name="tab_profile_title">Profile</string>
+    <string name="about_update_not_yet">Not updated yet</string>
+    <string name="report">Report</string>
+    <string name="reported">Report successfully</string>
+    <string name="unfriend">Unfriend</string>
+    <string name="add_friend">Add friend</string>
+    <string name="pending_friend_request">Requested</string>
+    <string name="response_friend_request">Response</string>
+
+    <string name="profile_daily_checkin_menu_title">Check-in</string>
+    <!--translate-->
+    <string name="profile_quest_menu_title">Mission</string>
+    <!---->
+    <string name="profile_menu_income_title">Top fans</string>
+    <string name="profile_diamond_menu_title">Diamonds</string>
+    <string name="profile_attractive_point_menu_title">Candy</string>
+    <string name="profile_level_menu_title">Level</string>
+    <string name="profile_rank_menu_title">Ranking</string>
+    <string name="profile_qr_menu_title">Scan QR code</string>
+    <string name="profile_setting_menu_title">Settings</string>
+    <string name="profile_feedback_menu_title">Feedback</string>
+    <string name="profile_live_stream_stat_menu_title">My livestream</string>
+
+    <string name="profile_checked_in">Checked</string>
+    <string name="profile_not_checked_in">Not checked yet</string>
+    <string name="profile_level_amount">Level %1$d</string>
+    <string name="profile_rank_over_100">Over 100</string>
+
+    <!--Reminder-->
+    <string name="reminder_search_more">Go following</string>
+    <string name="reminder_empty_messages"><![CDATA[Your followings are not LIVE now.]]></string>
+    <string name="reminder_title">Notifications</string>
+
+    <!--Settings-->
+    <string name="setting_title">Settings</string>
+    <string name="setting_languages">Languages</string>
+    <string name="setting_notifications">Notifications</string>
+    <string name="setting_abouts_us">About</string>
+    <string name="setting_term_of_use">Terms of use and Privacy policy</string>
+    <string name="setting_logout">Logout</string>
+
+    <string name="label_live">Live</string>
+    <string name="location_in_space">In space</string>
+    <string name="text_time_streaming">Is live</string>
+    <string name="text_time_one_minute_ago">1 minute ago</string>
+    <string name="text_time_minute_ago">minutes ago</string>
+    <string name="text_time_hour_ago">hours ago</string>
+    <string name="text_time_one_hour_ago">1 hour ago</string>
+    <string name="text_time_day_ago">days ago</string>
+    <string name="text_time_one_day_ago">1 day ago</string>
+
+    <string name="connection_failed_messages">No network connection</string>
+    <string name="connection_failed_retry_later">Please try again later</string>
+    <string name="connection_failed_tap_to_retry">Retry</string>
+
+    <string name="dialog_title">Notification</string>
+    <string name="dialog_positive_button">OK</string>
+    <string name="dialog_negative_button">Cancel</string>
+
+    <!--translate-->
+    <string name="dialog_another_device_logged_message">Your account is logged in on a new device.</string>
+    <string name="dialog_expire_session_message">Session timeout. Please login again.</string>
+    <!---->
+    <string name="dialog_logout_message">Logout this account?</string>
+
+    <string name="home">Home</string>
+    <!--translate-->
+    <string name="loading">Loading&#8230;</string>
+    <!---->
+    <string name="start">Start</string>
+    <string name="home_feeds_empty_text">Live stream to chat, find more friends and fans.</string>
+
+    <string name="home_network_retry">OK</string>
+
+    <!--Tab conversation home-->
+    <string name="conversation_home_title">Message</string>
+    <string name="message_from_strangers">All messages from strangers</string>
+    <string name="message_from_strangers_subtitle">All messages from strangers</string>
+    <string name="alert_have_message_from_strangers">You have messages from strangers</string>
+    <string name="profile_progress">Loading&#8230;</string>
+    <string name="friend_requests_row_title">Friend Request</string>
+    <string name="all_friend_requests">All friend Requests</string>
+    <string name="customer_service_row_title">Customer Service</string>
+    <string name="official_account_row_title">Official Account</string>
+    <string name="friend_request_one">You have %1$s new friend request.</string>
+    <string name="friend_request_other">You have %1$s new friend requests.</string>
+    <string name="conversation_delete_message">Delete this conversation?</string>
+    <string name="cannot_delete_conversation">Cannot delete this conversation. Please try again.</string>
+    <!--translate-->
+    <string name="text_just_now">now</string>
+    <string name="cannot_access_database">Cannot access the database</string>
+    <!---->
+
+    <!--Tab discover-->
+    <string name="discover_title">Discover</string>
+    <string name="discover_view_more">More</string>
+    <string name="section_ranking_title">Top Rank</string>
+    <string name="section_newcomer_title">Newcomer</string>
+    <string name="section_nearby_title">Nearby</string>
+    <string name="section_gaming_title">Gaming</string>
+    <string name="section_hot_title">Hot LIVE</string>
+    <string name="no_data">Empty data</string>
+    <string name="request_turn_on_location_permission"><![CDATA[
+    Location Service is off. <b>Enable now?</b>
+    ]]></string>
+
+    <!-- Nearby discover page -->
+    <string name="no_nearby_permission_alert">Please enable location access.</string>
+
+    <!-- Search page -->
+    <string name="search_hint">Search username or ID</string>
+    <string name="text_cancel">Cancel</string>
+    <string name="find_friend_fb">Facebook friends</string>
+    <string name="top_star">Top STAR</string>
+    <string name="no_search_data">Not found</string>
+
+    <!-- FeedBack Page -->
+    <string name="feedback_title">Feedback</string>
+    <!--translate-->
+    <string name="feedback_header">Your feedback will help us improve our application.</string>
+    <!---->
+    <string name="feedback_content">Enter your feedback details</string>
+    <string name="feedback_button_send">Send feedback</string>
+    <string name="feedback_success">Feedback sent successfully</string>
+    <!--translate-->
+    <string name="feedback_not_empty">Please enter content</string>
+    <string name="feedback_alert">Cannot send the feedback. Please check your network connection.</string>
+    <!---->
+    <string name="feedback_notify">Notifications</string>
+    <string name="feedback_try_again">Retry</string>
+    <string name="feedback_cancel">Cancel</string>
+
+    <!-- Star page -->
+    <string name="star_title">Stars</string>
+    <string name="star_yours">You have</string>
+    <string name="star_define">What\'s Star?</string>
+    <string name="star_define_answer">1. The value of gifts you received when streaming will be converted to stars.\n\n2. Stars show your rank.\n\n3. The value of diamonds is equal the value of stars in the gift shop.</string>
+
+    <!-- Rose page -->
+    <string name="attractive_title">Attractive Points</string>
+    <string name="attractive_yours">You have</string>
+    <string name="attractive_define">What\'s Attractive point?</string>
+    <string name="attractive_define_answer">1. The number of attractive points is equal the number of received roses when broadcasting.\n\n2. Attractive points are used for ranking and events.</string>
+    <string name="message_guide_get_attractive_point">Receiving roses help increasing Exp.</string>
+    <string name="send_gift">Send gift</string>
+    <!-- About Page -->
+    <string name="about_url">https://360live.vn/en/about-us</string>
+    <string name="about_title">About</string>
+    <!-- Policy Page -->
+    <string name="policy_url">https://360live.vn/policy</string>
+
+    <!-- Following Page -->
+    <string name="following_title">Follow</string>
+    <string name="following_notify">Confirm</string>
+    <string name="following_alert">Unfollow this person?</string>
+    <string name="following_agree">OK</string>
+    <string name="following_cancel">Cancel</string>
+    <string name="follow_failed">Failed to follow. Error: %1$d</string>
+    <string name="unfollow_failed">Failed to unfollow. Error: %1$d</string>
+
+    <!-- Chat page -->
+    <string name="private_chat_btn_unblock">Unblock</string>
+    <string name="private_chat_btn_request_friend">Add friend</string>
+    <string name="hint_send_private_chat">Type a message</string>
+    <string name="private_chat_menu_view_profile">View profile</string>
+    <string name="private_chat_menu_block">Block this person</string>
+    <string name="private_chat_menu_unblock">Unblock this person</string>
+    <string name="private_chat_menu_delete_conversation">Delete messages</string>
+    <string name="private_chat_menu_report">Report</string>
+    <string name="private_chat_menu_unfriend">Unfriend</string>
+    <string name="private_chat_alert_contact_blocked">You blocked this person. This person is unable to answer your messages.</string>
+    <string name="private_chat_alert_friend_request_sent">You sent a friend request. Please wait for the acceptance to chat with this person.</string>
+    <string name="private_chat_alert_stranger">You are not friend with this person. Add friend to start the conversation.</string>
+    <string name="block_private_chat_succeeded">Blocked this person</string>
+    <string name="block_private_chat_failed">You cannot block this user.</string>
+    <string name="unblock_private_chat_succeeded">Unblocked this person</string>
+    <string name="private_chat_stranger_conversation_alert">You need to send a friend request before chatting with this person.</string>
+    <string name="response_friend_request_label">%1$s sent you a friend request. Please accept the friend request to chat with this person.</string>
+    <!--translate-->
+    <string name="unblock_private_chat_failed">Failed to unblock. Please try again.</string>
+    <!---->
+    <string name="unfriend_succeeded">Unfriend successfully</string>
+    <!--translate-->
+    <string name="unfriend_failed">Failed to unfriend</string>
+    <!---->
+    <string name="send_friend_request_failed">Failed to send friend request</string>
+    <string name="send_friend_request_succeeded">Send request successfully</string>
+    <!--translate-->
+    <string name="load_private_messages_failed">Failed to load message</string>
+    <string name="chat_message_send_error">Sent error</string>
+    <!---->
+    <string name="private_chat_alert_blocked">You are blocked by this person.</string>
+    <!--translate-->
+    <string name="delete_conversation_failed_message">Failed to delete this conversation. Please try again later.</string>
+    <string name="get_conversation_failed">Cannot start the conversation. Please try again later.</string>
+    <!---->
+    <!-- Play, Push Stream-->
+    <string name="live_play_end">Live ended</string>
+    <string name="live_views">Views</string>
+    <string name="live_back_home">Back</string>
+    <string name="live_send_chat">Write Message</string>
+    <string name="live_message_policy">Be polite and respectful. Any smoking, vulgar, pornography and nudity display behaviors are prohibited in &appname;. If conducted, account will be banned.</string>
+    <string name="live_message_diamond_note">Note: Please recharge diamonds via official channels of &appname;.</string>
+    <string name="live_send_message">Send</string>
+    <string name="live_hint_type_your_message">Chat with everyone</string>
+    <string name="text_new_message">New messages</string>
+    <string name="live_send_gift">Send</string>
+    <string name="live_start_camera_failed">Failed to open the camera.</string>
+    <string name="live_chat_group_message_mute_chat">%1$s was blocked by %2$s.</string>
+    <string name="live_message_follow_suggest">Let\'s follow %1$s to not miss the next Live!</string>
+    <string name="live_gift_message_send">has sent %1$s x%2$s</string>
+    <string name="live_message_mute_chat">You cannot chat with this person.</string>
+    <string name="live_broadcasting">%1$s is live</string>
+    <string name="live_tap_to_back">Tap to back</string>
+    <string name="message_guide_level_up">Higher levels help you be more attractive on &appname;.</string>
+    <string name="text_level_popup"><![CDATA[<b><font color=#000000>Your level is upgraded </font> <font color=#f5b453>Level %1$d</font> </b>]]></string>
+    <string name="text_attractive_point_count"><![CDATA[<font color=#000000>Bạn đang có </font> <b><font color=#000000> %1$s</font></b>]]></string>
+    <string name="end_stream_status">Trạng thái %1$d</string>
+    <string name="live_gift_store_tab_gifts">Gifts</string>
+    <string name="live_gift_store_tab_bag">Bag</string>
+    <string name="live_gift_empty_bag_text">Your bag is empty!</string>
+
+    <string name="scan_pc_connector_prompt">Scan QR code on 360Live PC</string>
+    <string name="scan_pc_connector_download">Download 360Live PC at 360live.vn</string>
+
+    <!--translate-->
+    <string name="stream_start_error">Error when broadcasting. Please try again.</string>
+    <!---->
+
+    <!-- System maintenance screen-->
+    <string name="message_system_maintenance">THE SYSTEM UPGRADING\Sorry for the inconvenience. While waiting, you can live stream or use other our services.</string>
+
+    <!-- Diamond page -->
+    <string name="diamond_title">Diamond</string>
+    <string name="diamond_yours">You have</string>
+
+    <!--translate-->
+    <string name="dialog_close_button">Close</string>
+    <string name="dialog_explain_stream_note">To Live stream, &appname; need to access your camera and microphone.</string>
+    <!---->
+
+    <!--exception-->
+    <string name="exception.no.connection.try.again">Please check your network connection and try again.</string>
+    <string name="exception.token.expired.message">The session has expired. Please login again to continue.</string>
+    <string name="exception.logged.other.devices.message">You signed in with this account on another device.</string>
+    <string name="exception.generic">An error occurred while processing. Please try again!</string>
+    <string name="exception.no.connection">Please check your network connection.</string>
+    <string name="exception.timeout.message">Network is not stable. Please try again!</string>
+    <string name="exception.unknown.host">Please check your network connection and try again.</string>
+    <string name="exception.server.error">A system error occurred. Please try again later!</string>
+
+    <!-- Stranger conversations page -->
+    <string name="stranger_conversations_title">Recent Chats</string>
+    <string name="no_conversations">No conversations</string>
+
+    <!-- Friend request page -->
+    <string name="friend_requests_title">Friend Requests</string>
+    <string name="no_friend_requests">No friend requests</string>
+    <string name="response_friend_request_failed">Failed to response the friend request</string>
+    <string name="friend_request_accepted">Request accepted</string>
+    <string name="accept_friend_request">Accept</string>
+    <string name="deny_friend_request">Deny</string>
+
+    <!-- Customer service page -->
+    <string name="customer_service_title">Customer service</string>
+
+    <!-- New chat -->
+    <string name="new_chat">Friend list</string>
+
+    <!-- Friend page -->
+    <string name="friend_title">Friends</string>
+
+    <!---->
+    <string name="no_following">No following</string>
+    <string name="no_friends">No friends</string>
+    <string name="no_fan">No fans</string>
+
+    <!-- QR Scanner -->
+    <string name="qr_scan_login_title">Scan QR code</string>
+    <string name="qr_scanned_prompt">Completed</string>
+    <string name="scan_login_prompt">Point your camera at the QR code to scan.</string>
+    <string name="qr_scan_invalid_token">Invalid QR code</string>
+    <string name="qr_scan_prompt_open_link">Open this link? %1$s</string>
+    <string name="qr_prompt_permission_revoked">You revoked the camera permission. Please grant this permission to continue using this feature.</string>
+    <string name="scan_qr_code_error">Failed to scan QR code. Please try again.</string>
+
+    <!-- Fan page -->
+    <string name="fan_title">Fans</string>
+
+    <!-- NEED TRANSLATION -->
+    <string name="error_token_expired">Session timeout. Please login again.</string>
+    <string name="stream_confirm_close_stream">Quit this broadcast?</string>
+
+    <!--Pushing error popup-->
+    <string name="push_error_network_not_allows">Network unavailable. Please find better signal and retry.</string>
+    <string name="push_error_network_slow">Network unavailable. You cannot create broadcasting now.</string>
+    <string name="push_error_filter_slow">Beauty mode can cause your stream to jerk and slow. You should turn off this mode.</string>
+    <string name="push_error_end_stream_view">The stream ends because the network signal is too weak.</string>
+    <string name="stream_hint_flying_message">10 diamonds 1 fly message</string>
+    <string name="stream_cannot_send_flying_mesage">You don\'t have enough diamonds to send a fly message.</string>
+    <string name="gift_free">Free</string>
+    <string name="message_popup_send_not_enough_diamond">You don\'t have enough diamonds. Please recharge diamonds.</string>
+    <string name="message_popup_send_not_enough_candy">You don\'t have enough candies. Please complete daily missions to get more.</string>
+    <string name="message_rule_send_gift_free">Watching Live stream for 15 minutes, you will receive 1 rose. Everyday, you can receive up to 8 roses.</string>
+    <string name="message_rule_send_gift_free_not_enough">You don\'t have enough roses to send.</string>
+    <string name="send_gift_quantity">Send</string>
+    <string name="exception_server_error_with_code">Server error. Please try again later. Error: %1$d.</string>
+    <string name="stream_launch_app_installed">Open application</string>
+    <string name="stream_start_live">Go LIVE</string>
+    <string name="stream_tab_mobile_game">Mobile game</string>
+    <string name="stream_tab_pc_game">Pc game</string>
+    <string name="stream_title">Livestream</string>
+    <string name="stream_title_of_live">Your LIVE\'s Title</string>
+    <string name="location">Location</string>
+    <string name="top_fan_empty">No fans</string>
+
+    <!-- Share -->
+    <string name="share_with">Share to</string>
+    <string name="share_friends">Friends</string>
+    <string name="share_facebook">Facebook</string>
+    <string name="share_messenger">Messenger</string>
+    <string name="share_zalo">Zalo</string>
+    <string name="another_one">Others</string>
+    <string name="share_not_installed_facebook_alert">Please install Facebook!</string>
+    <string name="share_not_installed_messenger_alert">Please install Facebook Messenger!</string>
+    <string name="share_not_installed_zalo_alert">Please install Zalo!</string>
+
+    <!-- Top rank-->
+    <string name="top_rank_title">Ranking</string>
+    <string name="stars">Stars</string>
+    <string name="views">Views</string>
+    <string name="new_fans">New fans</string>
+    <string name="in_24h">Today</string>
+    <string name="in_7d">This week</string>
+
+    <!-- Check-in -->
+    <string name="check_in_days_of_month">Check-in monthly</string>
+    <string name="check_in_remind_text">Check-in reminder</string>
+    <string name="check_in_button">Check-in</string>
+    <string name="check_in_gift_detail">Details of gifts</string>
+    <string name="check_in_dialog_yesterday">Yesterday</string>
+    <string name="check_in_dialog_today">Today</string>
+    <string name="check_in_dialog_tomorrow">Tomorrow</string>
+    <string name="check_in_history_title">Check-in</string>
+    <string name="check_in_dialog_history_btn">Check-in history</string>
+    <string name="check_in_dialog_title">Check-in daily</string>
+    <string name="check_in_dialog_subtitle">Last %1$d days</string>
+    <string name="check_in_dialog_result_title">Check-in successfully</string>
+    <string name="check_in_dialog_result_subtitle">You got</string>
+
+    <!-- Game streaming -->
+    <string name="notification_capturing">Broadcasting</string>
+    <string name="start_streaming_button_text">Start</string>
+    <string name="viewer_count">View</string>
+    <string name="broadcasting_title">Broadcasting</string>
+    <string name="stop_broadcast">Stop</string>
+    <string name="live_viewer_count">Watching</string>
+    <string name="activity_start_streaming_game_title">Broadcast</string>
+    <string name="agree">Agree</string>
+    <string name="game_live_already_started">Started</string>
+    <string name="streaming_select_app_cancel">Cancel</string>
+    <string name="game_streaming_device_not_support">Game streaming is not supported for device Android under 5.1.</string>
+    <string name="tips_stream_sensitive_info_warning">Note: Everything on your mobile screen - notifications, calls, passwords- will broadcast.</string>
+    <string name="tips_audio_recording_warning">Micro records the sound of the game from the speaker. Please turn up the sound (the sound nearby can be recorded).</string>
+    <string name="game_streaming_hide_tips">Got it</string>
+    <string name="game_streaming_share_fb">Share Facebook</string>
+    <string name="text_settings">Settings</string>
+    <string name="game_streaming_show_tips">Note</string>
+    <string name="tips_stream_is_public">Your live stream is public.</string>
+    <string name="game_streaming_tips_update">Upgrade and update game before broadcasting.</string>
+    <string name="overlay_permission_denied">Permission denied</string>
+    <string name="perm_draw_overlay_button_disagree">Disagree</string>
+    <string name="perm_draw_overlay_button_settings">Open the settings</string>
+    <string name="perm_draw_overlay_explain_1">Allow app &appname; can display chat while you are streaming game.</string>
+    <string name="perm_draw_overlay_explain_2">Allow &appname;
+        drawing on another application.</string>
+    <string name="perm_draw_overlay_title">Display chat</string>
+    <string name="please_select_app">Please choose a game to start.</string>
+    <string name="search_app_hint">Type application name</string>
+    <string name="message_share_facebook_failed">Failed to share on Facebook. Agree to continue live stream.</string>
+    <string name="select_app">Select game</string>
+    <string name="streaming_game_subject_hint">Enter title</string>
+    <string name="start_broadcasting">Open application</string>
+    <string name="live_label">Live</string>
+    <string name="push_stream_error_and_contact_support">Sorry, something went wrong. Please contact customer service https://www.facebook.com/360liveapp/ for assistance.</string>
+    <string name="messages">Messages</string>
+    <string name="hint_send_message">Type a message</string>
+    <string name="send">Send</string>
+
+
+    <!-- NotificationActivity setting page -->
+    <string name="live_notification_setting_title">Notifications</string>
+    <string name="live_notification">LIVE Notifications</string>
+
+    <!-- Level page -->
+    <string name="level_score_now">Current Exp</string>
+    <string name="level_score_up">Exp. To next level</string>
+    <string name="level_what">What\'s Level?</string>
+    <string name="level_answer_what">1. Show the amount of your Exp.\n\n2. Every time you upgrade your level, could get more valuable labels.\n\n3. Higher level will help you to get more attention from broadcasters and viewers.</string>
+    <string name="level_how">How to upgrade?</string>
+    <string name="level_answer_how">1. Broadcasting to get Exp. every day.\n\n2. Watching broadcasts and interacting with STARs like sharing, expressing emotions or following to get more Exp.\n\n3. Sending gifts or roses is the best way to get Exp.</string>
+
+    <!-- Gaming-->
+    <string name="gaming">Gaming</string>
+    <string name="all_game">All games</string>
+    <string name="view_more">More</string>
+    <string name="hot_live">Hot live</string>
+    <string name="game_streaming_is_not_supported"><![CDATA[This feature is not available under Android 5.0]]></string>
+
+
+    <!-- Switch language -->
+    <string name="switch_language_title">Languages</string>
+    <string name="switch_language_thai_item">Thai</string>
+    <string name="switch_language_english_item">English</string>
+    <string name="switch_language_vn_item">Tiếng Việt</string>
+
+    <!-- Home feed's level badge -->
+    <string name="home_level_badge_text_range_1">Junior star</string>
+    <string name="home_level_badge_text_range_2">Senior star</string>
+    <string name="home_level_badge_text_range_3">Lead star</string>
+    <string name="home_level_badge_text_range_4">Idol star</string>
+    <string name="home_level_badge_text_range_5">Super star</string>
+    <string name="home_level_badge_text_range_6">Diva</string>
+
+    <!-- gaming -->
+    <string name="download_app">Download</string>
+    <string name="cannot_resolve_download_package">Cannot download this game</string>
+    <string name="push_streaming_error">An error occurred when streaming. Please try again.</string>
+
+    <!-- Facebook Friend -->
+    <string name="facebook_friend_title">Facebook Friends</string>
+    <string name="facebook_friend_no_friends">Your Facebook\'s friends haven\'t been on 360Live yet.</string>
+    <string name="facebook_friend_not_logged_in">You haven\'t logged in yet.</string>
+
+    <!-- Billing -->
+    <string name="iab_msg_invalidate">An error occurred when purchasing.\nError: [%1$d].</string>
+    <string name="iab_msg_non_exist_item">An error occurred when purchasing.\nNo item you want to buy.</string>
+    <string name="iab_msg_adding_diamond_success">"Your payment was successful! You got %1$d diamonds."</string>
+    <string name="iab_msg_dont_suppot_devices">Payment feature is not supported on this device.</string>
+    <string name="canceled_buy_diamond">Buying diamonds canceled</string>
+    <string name="login_with_google">Google</string>
+    <string name="login_with_facebook">Facebook</string>
+    <string name="login_with_zalo">Zalo</string>
+
+    <!-- swipe stream information-->
+    <string name="stream_swipe_info_title">Your LIVE\'s Title</string>
+    <string name="stream_swipe_info_title_tag">#Tag Your Live</string>
+    <string name="stream_swipe_info_total_time">LIVE Duration</string>
+    <string name="stream_swipe_info_new_fan">New Fans</string>
+    <string name="stream_swipe_info_new_star">New Stars</string>
+    <string name="stream_swipe_info_total_viewer">Total Viewers</string>
+    <string name="stream_title_empty">Empty title</string>
+    <!-- edit profile -->
+    <string name="edit_profile_title">Edit</string>
+    <string name="edit_profile_change_avatar">Change avatar</string>
+    <string name="edit_profile_name">Name: </string>
+    <string name="edit_profile_sex"> Gender: </string>
+    <string name="edit_profile_birthday"> Birthday: </string>
+    <string name="edit_profile_bio">Bio: </string>
+    <string name="edit_profile_education">Education</string>
+    <string name="edit_profile_job">Job</string>
+    <string name="edit_profile_update_success">Updated successfully</string>
+    <string name="edit_profile_error_update">Failed to update. Please try again.</string>
+    <string name="edit_profile_empty_bio_text">Not updated yet</string>
+    <string name="edit_profile_dialog_title_name">Edit display name</string>
+    <string name="edit_profile_dialog_title_gender">Choose your gender</string>
+    <string name="edit_profile_dialog_title_dob">Edit your birthday</string>
+    <string name="edit_profile_dialog_title_about">Write your bio</string>
+    <string name="edit_profile_dialog_title_edu">Edit education</string>
+    <string name="edit_profile_dialog_title_job">Edit work</string>
+    <string name="edit_profile_take_photo">Take photo</string>
+    <string name="edit_profile_image_library">Image library</string>
+    <string name="edit_profile_empty_info_alert">Edited information can not be left blank.</string>
+
+    <string name="gender_unspecified">Other</string>
+    <string name="gender_male">Male</string>
+    <string name="gender_female">Female</string>
+    <string name="live_confirm_mute_chat">Block messages from this person?</string>
+    <string name="beauty_off">Off</string>
+    <string name="beauty_on">On</string>
+    <string name="share_using">Share with</string>
+    <string name="smooth_filter">Smooth</string>
+    <string name="skin_tone_filter">Skin tone</string>
+    <string name="brightness_filter">Brightness</string>
+
+    <string name="profile_menu_vip_title">VIP %1$s</string>
+    <string name="profile_menu_no_vip_title">Not VIP yet</string>
+    <string name="profile_menu_no_equipment_title">Not equipped yet</string>
+    <string name="profile_menu_vip_day_expire">%1$dd:%2$dh left</string>
+    <string name="profile_menu_vip_hour_expire">%1$dh:%2$dm left</string>
+    <string name="profile_menu_equipment_day_expire">%1$dd:%2$dh left</string>
+    <string name="profile_menu_equipment_hour_expire">%1$dh:%2$dm left</string>
+    <string name="buy_vip_dialog_notification_renew_vip">Your VIP %1$s has expired. Please renew to continue.</string>
+    <string name="buy_vip_dialog_confirm_buy_vip_title">Buy this VIP</string>
+    <string name="buy_vip_dialog_confirm_buy_vip">You are paying %1$s diamonds for VIP %2$s for %3$d day.</string>
+    <string name="buy_vip_dialog_notification_not_enough_diamond">You don\'t have enough %d diamonds to get this VIP.</string>
+    <string name="text_buy_diamond">Recharge</string>
+    <string name="buy_vip_dialog_success">Congratulations! You have successfully bought VIP %1$s.</string>
+    <string name="buy_vip_dialog_expiredate">Expiry date: %1$s %2$s</string>
+    <string name="top_fan_daily_tabitem">Daily</string>
+    <string name="top_fan_monthly_tabitem">Monthly</string>
+    <string name="top_fan_total_tabitem">Total</string>
+    <string name="remain_time_daily_top_fan">%1$d:%2$d reset top fan ranking</string>
+    <string name="remain_time_monthy_top_fan">%1$d days %2$d:%3$d reset top fan ranking</string>
+    <string name="free_flying_message_count">You have %1$d free fly messages.</string>
+
+    <!-- Top fan -->
+    <string name="topfan_sent_gift_data">Sent %1$s</string>
+    <string name="top_fan_current_stars">Received</string>
+    <string name="top_fan_empty_text">No one has given gifts</string>
+    <string name="top_fan_empty_text2">Do you want to be the first?</string>
+    <string name="my_top_fan_empty_text">No one has given gifts</string>
+    <string name="my_top_fan_empty_text2">Go LIVE now!</string>
+
+    <string name="number_of_viewer">%1$s viewers</string>
+    <string name="number_of_vip_viewer">(%1$s VIP)</string>
+    <string name="viewer_list_empty">No viewers in room</string>
+
+    <string name="screenshot_save">Save</string>
+    <string name="screenshot_share">Share</string>
+    <string name="screenshot_save_photo_success">Saved photo</string>
+    <string name="screenshot_save_photo_failed">Failed to save photo</string>
+
+    <!-- Permission rationale dialog -->
+    <string name="turn_on_permission_button">Turn on</string>
+    <string name="deny_permission_button">Deny</string>
+    <string name="allow_permission_button">Allow</string>
+    <string name="open_permissions_setting_button">App setting</string>
+    <string name="live_stream_rationale_layout_message">Allow 360Live access to your camera and microphone to live stream and record videos.</string>
+    <string name="live_permission_rationale_title">Allow 360Live access to your camera and microphone to take photos and record videos.</string>
+    <string name="live_permission_deny_toast">You can’t live stream unless 360Live has access to your camera and micro.</string>
+    <string name="capture_avatar_rationale_layout_message">Allow 360Live access to your camera to take photos</string>
+    <string name="general_permission_dialog_title">Allow 360Live these following permissions?</string>
+    <string name="storage_rationale_title">Storage</string>
+    <string name="storage_rationale_dialog_title">Allow 360Live to access storage?</string>
+    <string name="storage_rationale_dialog_message">This lets 360Live store and access information like photos on your phone and its SD card.</string>
+    <string name="storage_avatar_rationale_dialog_message">This enables 360Live to use the photos in your gallery.</string>
+    <string name="storage_capture_screen_rationale_dialog_message">This enables 360Live to save screenshots to your gallery.</string>
+    <string name="storage_capture_permission_deny_toast">You can’t save screenshots into your gallery unless 360Live has access to your storage.</string>
+    <string name="storage_avatar_permission_deny_toast">You can’t use the photos in your gallery unless 360Live has access to your storage.</string>
+    <string name="camera_rationale_title">Camera</string>
+    <string name="camera_rationale_dialog_title">Allow 360Live to access camera?</string>
+    <string name="camera_avatar_rationale_dialog_message">This enables 360Live to access your camera in order to take photos.</string>
+    <string name="camera_live_rationale_dialog_message">This enables 360Live to access your camera in order to live stream and record videos.</string>
+    <string name="camera_capture_permission_rationale_title">Allow 360Live access to your camera to take photos; your storage to use information like photos on your phone and its SD card.</string>
+    <string name="camera_qr_rationale_layout_message">Allow 360Live to access your camera to scan QR code.</string>
+    <string name="camera_qr_permission_deny_toast">You can’t scan QR code unless 360Live has access to your camera.</string>
+    <string name="camera_avatar_permission_deny_toast">You can’t take photos unless 360Live has access to your camera.</string>
+    <string name="micro_rationale_title">Microphone</string>
+    <string name="micro_rationale_dialog_title">Allow 360Live to access microphone?</string>
+    <string name="micro_rationale_dialog_message">This enables 360Live to access your microphone in order to record videos.</string>
+    <string name="micro_permission_deny_toast">You can’t record videos unless 360Live has access to your microphone.</string>
+    <string name="location_rationale_title">Location</string>
+    <string name="location_rationale_dialog_title">Allow 360Live to access location?</string>
+    <string name="location_rationale_dialog_message">This enables 360Live to access your location in order to find nearby idols.</string>
+    <string name="location_permission_deny_toast">You can’t find nearby idols unless 360Live has access to your location.</string>
+    <string name="alert_turned_off_location_permission">Enable location access so that you can find nearby idols.</string>
+    <string name="new_version_title">New version</string>
+    <string name="new_version_message">Your current version is %1$s. Update to the newest version to get the best experience.</string>
+    <string name="new_version_positive_button">Update</string>
+    <string name="new_version_negative_button">Skip</string>
+    <string name="first_prize_description"><![CDATA[<b><font color=#000000>Limited-offer gift!</font></b><font color=#272727>  Get the chance to express your love!</font>]]></string>
+    <string name="first_prize_buy_btn">%s GO!</string>
+    <string name="first_prize_title">First Prize</string>
+
+    <!-- Join stream effect view -->
+    <string name="live_join_stream_effect_view_info_description">has arrived.</string>
+
+    <!-- Candy View -->
+    <string name="candy_main_toolbar_title">Candy</string>
+    <string name="candy_main_candy_number_description">You have</string>
+    <string name="candy_main_privileges">Privileges</string>
+    <string name="candy_main_special_gifts">Special gifts</string>
+    <string name="candy_main_exp">Exp</string>
+    <string name="candy_main_coming_soon">Coming soon</string>
+    <string name="candy_main_how_to_get_description">How to get</string>
+    <string name="candy_main_guide_1">Complete daily mission</string>
+    <string name="candy_main_guide_2">Check-in everyday</string>
+    <string name="candy_main_guide_3">Join 360Live event</string>
+    <string name="candy_main_guide_4">Invite friends to 360Live (coming soon)</string>
+
+    <!-- Daily candy mission -->
+    <string name="daily_mission_dialog_title">Daily candy mission</string>
+    <string name="daily_mission_action_share">Share</string>
+    <string name="daily_mission_action_like">Like</string>
+    <string name="daily_mission_action_follow">Follow</string>
+    <string name="daily_mission_like_mission_explain">Tap likes for the favored streamer.</string>
+    <string name="daily_mission_follow_mission_explain">Go follow the interested streamer!</string>
+    <string name="daily_mission_tooltip">All rewards will be reset at 23:59:59, so don’t miss out.</string>
+    <string name="daily_mission_gain_mission_success">Congrats! You have gained your reward.</string>
+    <string name="daily_mission_already_gained">You have gained this mission!</string>
+    <string name="daily_mission_reward_format">%1$d candies</string>
+    <string name="daily_mission_gain_button">Gain</string>
+    <string name="daily_mission_gained_label">Gained</string>
+    <string name="daily_mission_processing_label">Processing</string>
+    <string name="daily_mission_waiting_label">Waiting</string>
+    <string name="daily_mission_empty_alert">No missions</string>
+
+    <!--  stream action message message-->
+    <string name="user_join_stream_msg_1">is finally here!</string>
+    <string name="user_join_stream_msg_2">has entered the room!</string>
+    <string name="user_join_stream_msg_3">has come to chat!</string>
+    <string name="user_join_stream_msg_4">is here!</string>
+    <string name="user_join_stream_msg_5">come to chat!</string>
+    <string name="user_join_stream_msg_6">has arrived!</string>
+    <string name="user_stream_shared_msg">shared stream on %1$s. Spread the love!</string>
+    <string name="user_sent_heart_count_msg">sent %1$d likes.</string>
+    <string name="live_chat_group_message_follower"> followed this streamer.</string>
+
+    <!-- stream event message-->
+    <string name="user_level_up_msg">Congratulations! Fans %1$s rise up level %2$d</string>
+    <string name="system_message">System message</string>
+    <string name="see_more">See more...</string>
+
+    <string name="share_success">Share succeeded!</string>
+    <string name="share_fail">Share failed!</string>
+    <string name="buy_first_prize_success">Congratulations! You have received %1$d diamonds, %2$d EXP and %3$d candies.</string>
+    <string name="receiving_story_gift_fmt">Sent 1 %1$s</string>
+
+    <!-- group notification channel user visible name -->
+    <string name="private_chat_notification_visible_name">Private chat notifications</string>
+    <string name="game_streaming_notification_visible_name">Game streaming notification</string>
+    <string name="watching_livestream_notification_visible_name">Watching livestream notification</string>
+    <string name="general_application_notification_visible_name">General application notifications</string>
+    <string name="profile_link_to_fb_fanpage">Facebook Fanpage</string>
+
+    <!-- equipment -->
+    <string name="equipment_empty_alert">No equipment</string>
+    <string name="equipment_toolbar_title">Equipment</string>
+    <string name="equipment_unlocked_item_range">Unlocked %1$d/%2$d</string>
+    <string name="equipment_remaining_time">%1$s left</string>
+    <string name="equipment_expired">Expired</string>
+
+    <string name="remaining_day_one">%1$d day</string>
+    <string name="remaining_day_other">%1$d days</string>
+
+    <string name="remaining_hour_one">%1$d hour</string>
+    <string name="remaining_hour_other">%1$d hours</string>
+
+    <string name="remaining_minute_one">%1$d minute</string>
+    <string name="remaining_minute_other">%1$d minutes</string>
+
+    <string name="remaining_second_one">%1$d second</string>
+    <string name="remaining_second_other">%1$d seconds</string>
+
+    <string name="diamond_one">%1$s diamond</string>
+    <string name="diamond_other">%1$s diamonds</string>
+
+    <!-- Equipment Detail -->
+    <string name="equipment_detail_status_unloked">Unlocked</string>
+    <string name="equipment_detail_status_locked">Locked</string>
+
+    <string name="equipment_detail_unlocked_description">Unlock need %1$s</string>
+    <string name="equipment_detail_vip_discount_description">%1$s discount %2$d%%</string>
+    <string name="equipment_detail_vip_buy_button">UNLOCK WITH %1$s</string>
+    <string name="equipment_detail_vip_discount_button">DISCOUNTED: %1$s</string>
+    <string name="equipment_detail_enable">Use</string>
+    <string name="equipment_detail_disable">Off</string>
+
+    <string name="equipment_detail_renew_description">Renew %1$s: %2$s</string>
+
+    <string name="equipment_detail_required_level_description">Require: %1$s</string>
+    <string name="equipment_detail_warning_required_level_description">Require: %1$s</string>
+    <string name="equipment_detail_remaining_time_description">Expire in: %1$s</string>
+    <string name="equipment_detail_locked_remaining_time_description">Expire in: %1$s</string>
+
+    <string name="equipment_detail_no_discount_vip_description">Not VIP yet: discount 0%</string>
+    <string name="equipment_detail_discount_vip_for_renew_description">%1$s: discount %2$d%%</string>
+    <string name="equipment_detail_renew_discount_description">Renewed %1$s times: discount %2$d%%</string>
+    <string name="equipment_detail_renew_button">RENEW WITH %1$s</string>
+    <string name="equipment_detail_expired_text">Expired</string>
+
+    <!-- Equipment Confirm Dialog -->
+    <string name="equipment_confirm_buy_equipment_title">Confirm unlock equipment</string>
+    <string name="equipment_confirm_buy_equipment_description">Do you want to use %1$s to unlock %2$s %3$s</string>
+    <string name="equipment_dialog_accept_button">OK</string>
+    <string name="equipment_dialog_cancel_button">Cancel</string>
+
+    <string name="equipment_confirm_renew_equipment_title">Confirm renew equipment</string>
+    <string name="equipment_confirm_renew_equipment_description">Use %1$s to renew %2$s %3$s</string>
+
+    <string name="equipment_renew_equipment_success_title">Notification</string>
+    <string name="equipment_renew_equipment_success_description">Congratulations! You got %1$s with expiry date: %2$s</string>
+
+    <string name="equipment_not_enough_diamond_title">Notification</string>
+    <string name="equipment_not_enough_diamond_desc">Not enough diamonds, please recharge diamonds.</string>
+    <string name="equipment_not_enough_diamond_accept_button">Recharge</string>
+    <string name="equipment_not_enough_diamond_cancel_button">Cancel</string>
+
+    <!-- Control user popup -->
+    <string name="popup_control_user_admin_list_button">Admin list</string>
+    <string name="popup_control_user_set_admin_button">Set admin</string>
+    <string name="popup_control_user_remove_admin_button">Remove admin</string>
+    <string name="popup_control_user_kick_out_button">Kick out</string>
+    <string name="popup_control_user_mute_button">Mute</string>
+    <string name="popup_control_user_unmute_button">Unmute</string>
+    <string name="popup_control_user_report_button">Report</string>
+    <string name="popup_control_user_insufficient_privilege">You don’t have sufficient permissions</string>
+    <string name="popup_control_user_admin_is_full">The number of room admin reached the limit.</string>
+    <string name="popup_control_user_admin_removed">Admin removed.</string>
+
+    <!-- Admin list popup -->
+    <string name="popup_admin_list_title">My admin</string>
+    <string name="popup_admin_list_description">Admin can kick out or mute Fans in Live room.</string>
+    <string name="popup_admin_list_remove_button">Remove</string>
+
+    <!-- Kick from stream message -->
+    <string name="kicked_from_stream_by_user_message">You was kicked out of the room by %1$s and cannot return until next Live.</string>
+    <string name="kicked_from_stream_message">You was kicked out of the room and cannot return until next Live.</string>
+    <string name="kicked_from_stream_chat_group_message">%1$s was kicked out of the room by %2$s and cannot return until next Live.</string>
+    <string name="popup_admin_list_no_admins">You didn\'t grant any admins permissions to your fans yet!</string>
+    <string name="mute_from_stream_by_user_message">%1$s was blocked by %2$s.</string>
+    <string name="room_admin_set">%1$s became the room admin.</string>
+
+    <!-- Top Rank -->
+    <string name="top_rank_tab_got_star">Stars Got</string>
+    <string name="top_rank_tab_sent_gift">Gifts Sent</string>
+    <string name="top_rank_tab_viewer">Viewers</string>
+    <string name="top_rank_tab_new_fans">New Fans</string>
+    <string name="top_rank_empty">Ranking is empty</string>
+    <string name="top_rank_more">More</string>
+
+    <!-- Official account news -->
+    <string name="like_fan_page_label">Like us on Fanpage</string>
+</resources>

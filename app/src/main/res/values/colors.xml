@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">@color/black</color>
+    <color name="colorAccent">#0099CC</color>
+
+    <color name="windowBackground">#D9D9D9</color>
+    <color name="windowBackgroundSplash">#EEEEEE</color>
+
+    <color name="colorAppBlue">#00f2ff</color>
+    <color name="colorAppBlueLight">#5fc9f5</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray">#808080</color>
+    <color name="gold">#fdb514</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="green">#008000</color>
+    <color name="purple">#800080</color>
+    <color name="pink">#FFC0CB</color>
+    <color name="live_pink">#ff266e</color>
+    <color name="silver">#C0C0C0</color>
+    <color name="color_99262626">#99262626</color>
+    <color name="color_262626">#262626</color>
+    <color name="color_4d4d4d">#4d4d4d</color>
+    <color name="color_fafbff">#fafbff</color>
+    <color name="color_e7e7e7">#e7e7e7</color>
+    <color name="color_7e7e7e">#7e7e7e</color>
+    <color name="color_f3f3f3">#f3f3f3</color>
+    <color name="color_24a3ff">#24a3ff</color>
+    <color name="color_889399">#889399</color>
+    <color name="color_b2c0c8">#b2c0c8</color>
+    <color name="color_4dffffff">#4cffffff</color>
+    <color name="color_ccffffff">#ccffffff</color>
+    <color name="color_006fff">#006fff</color>
+    <color name="color_00acff">#00acff</color>
+    <color name="color_9a33fb">#9a33fb</color>
+    <color name="color_f3bf30">#f3bf30</color>
+    <color name="color_f5c131">#f5c131</color>
+    <color name="color_f5f5f5">#f5f5f5</color>
+    <color name="color_66000000">#66000000</color>
+
+    <color name="color_050505">#050505</color>
+    <color name="color_185065">#185065</color>
+    <color name="color_3dece8e8">#3dece8e8</color>
+    <color name="color_f5f6f8">#f5f6f8</color>
+    <color name="color_ff4661">#ff4661</color>
+    <color name="color_99ff4661">#99ff4661</color>
+    <color name="color_acb3ba">#acb3ba</color>
+    <color name="color_e3e6e7">#e3e6e7</color>
+    <color name="color_ffa356">#ffa356</color>
+    <color name="color_c7d7e1">#c7d7e1</color>
+    <color name="color_19000000">#19000000</color>
+    <color name="color_b3b2c0c8">#b3b2c0c8</color>
+    <color name="color_31f5b7">#31f5b7</color>
+    <color name="color_fbff17">#fbff17</color>
+    <color name="color_00d8e3">#00d8e3</color>
+    <color name="color_ececec">#ececec</color>
+    <color name="color_313131">#313131</color>
+    <color name="default_image_place_holder">#C0C0C0</color>
+    <color name="color_f5c1311">#f5c131</color>
+    <color name="main_toolbar_color">@color/white</color>
+    <color name="color_272727">#272727</color>
+    <color name="color_ff3494">#FF3494</color>
+    <color name="color_fafafa">#fafafa</color>
+    <color name="color_e4e4e4">#e4e4e4</color>
+    <color name="color_32c26c">#32c26c</color>
+    <color name="color_e6b224">#e6b224</color>
+
+    <!--Level background-->
+    <color name="level_range_1">#64DC81</color>
+    <color name="level_range_2">#FF539A</color>
+    <color name="level_range_3">#0DCBF1</color>
+    <color name="level_range_4">#FF892A</color>
+    <color name="level_range_5">#FF7C5D</color>
+    <color name="level_range_6">#44E3EC</color>
+
+    <!-- gift color for vip-->
+    <color name="vip1_gift_message_color">#e6e9b833</color>
+    <color name="vip2_gift_message_color">#e6ff4d67</color>
+    <color name="vip3_gift_message_color">#e6c282ff</color>
+
+    <color name="toolbar_button_normal_color">@android:color/transparent</color>
+    <color name="toolbar_button_pressed_color">#ef4646</color>
+    <color name="read_conversation_subtitle">#8e8e92</color>
+
+    <color name="search_box_background">#f0f1f5</color>
+    <color name="search_box_hint_color">#b2c0c8</color>
+    <color name="search_box_text_color">#262626</color>
+
+    <color name="chat_alert_button_stroke_color">#b3b2c0c8</color>
+    <color name="private_chat_message_time_color">#C6C6C8</color>
+
+    <!-- ZViewFinderView colors (copied attributes from zxing-embedded-android)-->
+    <color name="zviewfinder_view_laser">#00f2ff</color> <!-- Android standard ICS color -->
+    <color name="zviewfinder_view_laser_focal_rect_color">#00f2ff
+    </color> <!-- Android standard ICS color -->
+    <color name="zviewfinder_view_mask">#60000000</color>
+    <color name="zviewfinder_view_possible_result_points">#c0ffbd21
+    </color> <!-- Android standard ICS color -->
+    <color name="zviewfinder_view_result_view">#b0000000</color>
+    <!-- top rank -->
+    <color name="color_black_transparent">#19000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="color_ff4c67">#ff4c67</color>
+    <color name="color_f4c238">#f4c238</color>
+    <color name="color_4097F2">#4097F2</color>
+
+    <!-- Check-in -->
+    <color name="check_in_history_divider">#f3f3f3</color>
+
+    <!-- Candy -->
+    <color name="color_candy_divider">#e4e4e4</color>
+    <color name="color_ff347a">#ff347a</color>
+    <color name="color_f9f9f9">#f9f9f9</color>
+
+    <!-- game streaming -->
+    <color name="background_hide_tips_pressed">#66d6eef1</color>
+    <color name="background_hide_tips">#05a3e5</color>
+    <color name="game_streaming_select_app_pressed_bg_color">#3dece8e8</color>
+    <color name="background_app_item_pressed">#3dece8e8</color>
+    <color name="color_divider">#b5b5b5</color>
+
+    <!-- Setting -->
+    <color name="color_notification">#fafbff</color>
+
+    <!-- Top fan -->
+    <color name="top_fan_top_1_text_color">#FED00A</color>
+    <color name="top_fan_top_2_text_color">#C5D6DF</color>
+    <color name="top_fan_top_3_text_color">#EBBE94</color>
+
+    <!-- camera filter option seekbar-->
+    <color name="seekbar_filter_option">#00d8e3</color>
+    <color name="gift_message_color_default">#76f8be</color>
+    <color name="color_f2f2f2">#f2f2f2</color>
+    <color name="live_screenshot_border_text_color">#80000000</color>
+    <color name="live_ended_overlay_color">#cc000000</color>
+
+    <!-- Gift store -->
+    <color name="progress_bar_color">#9a33fb</color>
+
+    <!-- toolbar title color-->
+    <color name="toolbar_title_color">#272727</color>
+
+    <color name="group_chat_user_name_default_msg">#99ffffff</color>
+    <color name="group_chat_user_name_action_msg">#ccffffff</color>
+    <color name="group_chat_default_background_msg">#3f000000</color>
+    <color name="group_chat_vip1_color">#66ffc933</color>
+    <color name="group_chat_vip2_color">#66ff3352</color>
+    <color name="group_chat_vip3_color">#66b433ff</color>
+</resources>

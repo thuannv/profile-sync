@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/private_chat_item_bottom_spacing"
+    android:layout_marginEnd="86dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="86dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="@dimen/private_chat_item_top_spacing">
+
+    <!-- Avatar -->
+    <com.vng.live.ui.widget.CircleImageView
+        android:id="@+id/avatar"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentTop="true"/>
+
+    <!-- Content text -->
+    <com.vng.live.ui.widget.CustomFontTextView
+        android:id="@+id/message_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_toEndOf="@id/avatar"
+        android:background="@drawable/bubble_chatter"
+        android:paddingBottom="@dimen/private_chat_text_bottom_spacing"
+        android:paddingEnd="@dimen/private_chat_text_start_spacing"
+        android:paddingStart="@dimen/private_chat_text_end_spacing"
+        android:paddingTop="@dimen/private_chat_text_top_spacing"
+        android:textColor="@color/color_4d4d4d"
+        android:textIsSelectable="true"
+        android:textSize="14.4sp"
+        app:fontPath="@string/SFUIText_Regular"
+        tools:text="hi there, this is the message you will not see in your ádf ádfasdf adsfasf ádfas dfa ádf ádf adfad adfad adjk adhfkj alds fạdh klfajshdkl ahsfkl hslkd haklsdh kladsh klajhd kldjahsf "/>
+
+    <!-- Message created time -->
+    <com.vng.live.ui.widget.CustomFontTextView
+        android:id="@+id/message_created_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="@dimen/private_chat_time_top_spacing"
+        android:gravity="center_vertical"
+        android:textColor="@color/private_chat_message_time_color"
+        android:textSize="9.6sp"
+        android:visibility="visible"
+        android:layout_alignEnd="@+id/message_text"
+        android:layout_below="@id/message_text"
+        app:fontPath="@string/SFUIText_Regular"
+        tools:text="12:03"/>
+</RelativeLayout>

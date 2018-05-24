@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginBottom="7dp"
+              android:layout_marginEnd="16dp"
+              android:layout_marginLeft="86dp"
+              android:layout_marginRight="16dp"
+              android:layout_marginStart="86dp"
+              android:gravity="right|end">
+
+    <!-- Retry button -->
+    <ImageView
+        android:id="@+id/btn_retry"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_margin="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_mess_retry"
+        android:visibility="gone"/>
+
+    <!-- Message text, created time and fail alert layout -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Message content text -->
+        <com.vng.live.ui.widget.CustomFontTextView
+            android:id="@+id/message_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/bubble_me"
+            android:paddingBottom="@dimen/private_chat_text_bottom_spacing"
+            android:paddingEnd="@dimen/private_chat_text_start_spacing"
+            android:paddingStart="@dimen/private_chat_text_end_spacing"
+            android:paddingTop="@dimen/private_chat_text_bottom_spacing"
+            android:textColor="@color/white"
+            android:textIsSelectable="true"
+            android:textSize="14.4sp"
+            app:backgroundTint="#FF4C8A"
+            tools:text="hi."/>
+
+        <!-- Send fail alert -->
+        <com.vng.live.ui.widget.CustomFontTextView
+            android:id="@+id/alert_send_fail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:text="@string/chat_message_send_error"
+            android:textColor="#FA624B"
+            android:textSize="11.5sp"
+            android:visibility="gone"/>
+
+        <!-- Message created time -->
+        <com.vng.live.ui.widget.CustomFontTextView
+            android:id="@+id/message_created_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/private_chat_message_time_color"
+            android:textSize="9.6sp"
+            android:visibility="visible"
+            app:fontPath="@string/SFUIText_Regular"
+            tools:text="12:03"/>
+    </LinearLayout>
+</LinearLayout>

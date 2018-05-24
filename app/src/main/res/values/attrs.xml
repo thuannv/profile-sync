@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- CircleImageView -->
+    <declare-styleable name="CircleImageView">
+        <attr name="civ_border_width" format="dimension" />
+        <attr name="civ_border_color" format="color" />
+        <attr name="civ_border_overlay" format="boolean" />
+        <attr name="civ_fill_color" format="color" />
+    </declare-styleable>
+
+    <!-- Conversation header-->
+    <declare-styleable name="ConversationHeaderRow">
+        <attr name="conversation_header_icon" format="integer|reference"/>
+        <attr name="conversation_header_title" format="string|reference"/>
+    </declare-styleable>
+
+    <attr name="fontPath" format="string"/>
+
+    <declare-styleable name="CustomFontTextView">
+        <attr name="fontPath"/>
+    </declare-styleable>
+
+    <declare-styleable name="CustomFontEditText">
+        <attr name="fontPath"/>
+    </declare-styleable>
+
+    <declare-styleable name="CustomFontButton">
+        <attr name="fontPath"/>
+    </declare-styleable>
+</resources>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="77dp"
+    android:background="?attr/selectableItemBackground">
+
+    <com.vng.live.ui.widget.CircleImageView
+        android:id="@+id/avatar"
+        android:layout_width="39dp"
+        android:layout_height="39dp"
+        android:layout_margin="@dimen/conversation_home_item_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/subtitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/loading_avatar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:indeterminate="true"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@id/avatar"
+        app:layout_constraintEnd_toEndOf="@id/avatar"
+        app:layout_constraintStart_toStartOf="@id/avatar"
+        app:layout_constraintTop_toTopOf="@id/avatar" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/middle_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <com.vng.live.ui.widget.CustomFontTextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2.4dp"
+        android:maxLines="1"
+        android:textColor="#4d4d4d"
+        android:textSize="13.4sp"
+        app:layout_constraintBottom_toTopOf="@id/middle_guideline"
+        app:layout_constraintEnd_toEndOf="@id/subtitle"
+        app:layout_constraintStart_toStartOf="@id/subtitle"
+        tools:text="abcdef" />
+
+    <com.vng.live.ui.widget.CustomFontTextView
+        android:id="@+id/subtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2.4dp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textSize="12.5sp"
+        app:layout_constraintEnd_toStartOf="@id/last_message_time"
+        app:layout_constraintStart_toEndOf="@id/avatar"
+        app:layout_constraintTop_toBottomOf="@id/middle_guideline"
+        tools:text="abcdef" />
+
+    <com.vng.live.ui.widget.CustomFontTextView
+        android:id="@+id/message_count"
+        android:layout_width="wrap_content"
+        android:layout_height="17.3dp"
+        android:layout_gravity="end"
+        android:layout_marginEnd="@dimen/conversation_home_item_margin"
+        android:layout_marginStart="@dimen/conversation_home_item_margin"
+        android:background="@drawable/conversation_message_count_background"
+        android:gravity="center"
+        android:maxLength="4"
+        android:maxLines="1"
+        android:minWidth="16dp"
+        android:paddingEnd="6dp"
+        android:paddingStart="6dp"
+        android:textColor="#FF347A"
+        android:textSize="10sp"
+        android:visibility="visible"
+        app:fontPath="@string/SFUIText_Heavy"
+        app:layout_constraintBottom_toBottomOf="@id/title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/title"
+        tools:text="99" />
+
+    <!--Last modified time-->
+    <com.vng.live.ui.widget.CustomFontTextView
+        android:id="@+id/last_message_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/conversation_home_item_margin"
+        android:layout_marginStart="@dimen/conversation_home_item_margin"
+        android:ellipsize="end"
+        android:gravity="right"
+        android:lines="1"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textSize="12.5sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@id/subtitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/subtitle"
+        app:layout_constraintTop_toTopOf="@id/subtitle"
+        tools:text="2 phut" />
+</android.support.constraint.ConstraintLayout>

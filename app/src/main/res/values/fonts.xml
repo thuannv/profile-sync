@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="GothamRounded_Bold" translatable="false">fonts/GothamRounded-Bold.otf</string>
+
+    <string name="GothamRounded_Medium" translatable="false">fonts/GothamRounded-Medium.otf</string>
+
+    <string name="ProximaNova_Bold" translatable="false">fonts/ProximaNova-Bold.otf</string>
+
+    <string name="ProximaNova_Regular" translatable="false">fonts/ProximaNova-Regular.otf</string>
+
+    <string name="ProximaNovaAlt_Bold" translatable="false">fonts/ProximaNovaAlt-Bold.otf</string>
+
+    <string name="ProximaNovaAlt_Regular" translatable="false">fonts/ProximaNovaAlt-Regular.otf</string>
+
+    <string name="ProximaNovaAlt_Semibold" translatable="false">fonts/ProximaNovaAlt-Semibold.otf</string>
+
+    <string name="ProximaNovaSoft_Medium" translatable="false">fonts/ProximaNovaSoft-Medium.otf</string>
+
+    <string name="SFUIDisplay_Bold" translatable="false">fonts/SFUIDisplay-Bold.otf</string>
+
+    <string name="SFUIDisplay_Heavy" translatable="false">fonts/SFUIDisplay-Heavy.otf</string>
+
+    <string name="SFUIDisplay_Medium" translatable="false">fonts/SFUIDisplay-Medium.otf</string>
+
+    <string name="SFUIDisplay_Regular" translatable="false">fonts/SFUIDisplay-Regular.otf</string>
+
+    <string name="SFUIDisplay_Semibold" translatable="false">fonts/SFUIDisplay-Semibold.otf</string>
+
+    <string name="SFUIText_Bold" translatable="false">fonts/SFUIText-Bold.otf</string>
+
+    <string name="SFUIText_Heavy" translatable="false">fonts/SFUIText-Heavy.otf</string>
+
+    <string name="SFUIText_Medium" translatable="false">fonts/SFUIText-Medium.otf</string>
+
+    <string name="SFUIText_Regular" translatable="false">fonts/SFUIText-Regular.otf</string>
+
+    <string name="SFUIText_Semibold" translatable="false">fonts/SFUIText-Semibold.otf</string>
+</resources>
