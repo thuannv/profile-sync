@@ -3,9 +3,9 @@ package com.vng.datasync.data.remote;
 import android.content.Context;
 import android.os.Handler;
 
-import com.vng.datasync.protobuf.ZLive;
 import com.vng.datasync.BuildConfig;
 import com.vng.datasync.Constants;
+import com.vng.datasync.Injector;
 import com.vng.datasync.data.ChatConversation;
 import com.vng.datasync.data.ChatMessage;
 import com.vng.datasync.data.event.Event;
@@ -14,11 +14,13 @@ import com.vng.datasync.data.local.room.RoomDatabaseManager;
 import com.vng.datasync.data.model.Profile;
 import com.vng.datasync.data.model.roomdb.ChatMessageDBO;
 import com.vng.datasync.data.remote.websocket.WebSocketManager;
+import com.vng.datasync.data.remote.websocket.WebSocketManagerInf;
+import com.vng.datasync.protobuf.ZLive;
 import com.vng.datasync.util.CollectionUtils;
 import com.vng.datasync.util.Logger;
 import com.vng.datasync.util.NotificationHelper;
-import com.vng.datasync.util.RequestHelper;
 import com.vng.datasync.util.ProfileManager;
+import com.vng.datasync.util.RequestHelper;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -58,6 +60,8 @@ public class PrivateChatHandler {
 
     private long mStartSyncTime;
 
+    private WebSocketManagerInf mWebSocketManager;
+
     private final Runnable mWatchDogsRunnable = new Runnable() {
         @Override
         public void run() {
@@ -95,6 +99,7 @@ public class PrivateChatHandler {
         mRoomDatabaseManager = RoomDatabaseManager.getInstance();
         mRequestHelper = RequestHelper.getInstance();
         mProfileManager = ProfileManager.getInstance();
+        mWebSocketManager = Injector.providesWebSocketManager();
 
         mProfileManager.init(context);
         mRoomDatabaseManager.initForUser(context);
@@ -184,7 +189,7 @@ public class PrivateChatHandler {
 
     private void confirmReceivedMessage(ZLive.ZAPIPrivateChatItem chatItem) {
         byte[] message = MessageHelper.createMessage(Commands.CMD_CHAT_PRIVATE_RECEIVED_CONFIRM, chatItem.toByteString());
-        WebSocketManager.getInstance().send(message);
+        mWebSocketManager.send(message);
     }
 
     private void syncProfileIfNeeded(int contactId) {
@@ -229,9 +234,7 @@ public class PrivateChatHandler {
         mJobCount = new AtomicInteger(channelsList.size());
 
         mWorker.execute(() -> {
-            WebSocketManager wsConnectionManager = WebSocketManager.getInstance();
-
-            if (!wsConnectionManager.isConnected()) {
+            if (!mWebSocketManager.isConnected()) {
                 sIsSyncingMessages = false;
                 return;
             }
@@ -242,7 +245,7 @@ public class PrivateChatHandler {
             for (ZLive.ZAPIPrivateChatChannelMetaData channel : channelsList) {
                 message = MessageHelper.createMessage(Commands.CMD_CHAT_PRIVATE, channel.toByteString());
                 try {
-                    wsConnectionManager.send(message);
+                    mWebSocketManager.send(message);
                 } catch (Exception e) {
                     L.e(e.toString());
                 }
@@ -259,14 +262,12 @@ public class PrivateChatHandler {
 
     private void syncCompleted(int syncedOwnerId) {
         if (syncedOwnerId > 0) {
-            final WebSocketManager wsConnectionManager = WebSocketManager.getInstance();
-
             final ZLive.ZAPIPrivateChatChannelMetaData confirmedData = MessageHelper.createConfirmSyncedChannelData(syncedOwnerId);
 
             byte[] message = MessageHelper.createMessage(Commands.CMD_CHAT_PRIVATE_OFFLINE_RECEIVED_CONFIRM, confirmedData.toByteString());
 
-            if (wsConnectionManager.isConnected()) {
-                wsConnectionManager.send(message);
+            if (mWebSocketManager.isConnected()) {
+                mWebSocketManager.send(message);
             }
         }
 
@@ -293,8 +294,9 @@ public class PrivateChatHandler {
     }
 
     public static boolean shouldSyncOfflineMessages(long lastSyncTimestamp) {
+        WebSocketManagerInf wsManager = Injector.providesWebSocketManager();
         return !isSyncingMessages()
                 && (System.currentTimeMillis() - lastSyncTimestamp > Constants.OFFLINE_MSG_SYNC_INTERVAL)
-                && WebSocketManager.getInstance().isConnected();
+                && wsManager.isConnected();
     }
 }

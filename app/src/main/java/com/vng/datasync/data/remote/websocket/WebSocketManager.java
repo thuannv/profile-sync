@@ -37,7 +37,7 @@ import static com.vng.datasync.data.remote.websocket.WebSocketConnection.State.n
  * @since 10/08/2017
  */
 
-public final class WebSocketManager implements ConnectionObserver {
+public final class WebSocketManager implements ConnectionObserver, WebSocketManagerInf {
 
     private static final boolean DEBUG = true;
 

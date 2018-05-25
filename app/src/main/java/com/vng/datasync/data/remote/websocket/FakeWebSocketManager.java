@@ -16,7 +16,7 @@ import java.util.concurrent.CountDownLatch;
  * @author thuannv
  * @since 23/05/2018
  */
-public final class FakeWebSocketManager implements WebSocketConnection.ConnectionObserver {
+public final class FakeWebSocketManager implements WebSocketConnection.ConnectionObserver, WebSocketManagerInf {
 
     private static final Logger L = Logger.getLogger("FakeWebSocketManager", true);
 
@@ -99,6 +99,26 @@ public final class FakeWebSocketManager implements WebSocketConnection.Connectio
                 }
             }
         }
+    }
+
+    @Override
+    public void connect() {
+        //TODO:
+    }
+
+    @Override
+    public void disconnect(String reason) {
+        //TODO:
+    }
+
+    @Override
+    public void send(byte[] data) {
+        //TODO:
+    }
+
+    @Override
+    public boolean isConnected() {
+        return true;
     }
 
     /**
