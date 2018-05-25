@@ -10,11 +10,16 @@ import com.google.gson.Gson;
 import com.vng.datasync.data.DataProvider;
 import com.vng.datasync.data.ProfileRepository;
 import com.vng.datasync.data.model.Profile;
+import com.vng.datasync.data.remote.ServiceProvider;
+import com.vng.datasync.data.remote.rest.response.ProfileResponse;
+import com.vng.datasync.data.remote.rest.response.Response;
 import com.vng.datasync.data.remote.websocket.FakeWebSocketManager;
 import com.vng.datasync.data.remote.websocket.FakeWebsocketDataGenerator;
 import com.vng.datasync.util.Logger;
+import com.vng.datasync.util.ResponseSubscriber;
 import com.vng.datasync.util.SimpleSubscriber;
 
+import rx.Scheduler;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -52,35 +57,42 @@ public class DataSyncApp extends Application {
             StrictMode.enableDefaults();
         }
 
-        ProfileRepository.getInstance()
-                .get(900332)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SimpleSubscriber<Profile>() {
-                    @Override
-                    public void onNext(Profile profile) {
-                        if (profile == null) {
-                            L.e("profile is null");
-                        } else {
-                            final Gson gson = new Gson();
-                            L.e("profile = %s", gson.toJson(profile));
-                        }
-                    }
-                });
+//        ProfileRepository.getInstance()
+//                .get(900332)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new SimpleSubscriber<Profile>() {
+//                    @Override
+//                    public void onNext(Profile profile) {
+//                        if (profile == null) {
+//                            L.e("profile is null");
+//                        } else {
+//                            final Gson gson = new Gson();
+//                            L.e("profile = %s", gson.toJson(profile));
+//                        }
+//                    }
+//                });
 
         DataProvider.getInstance().init(this);
 
         FakeWebSocketManager.getInstance().init();
 
-        FakeWebSocketManager.getInstance().init();
+        //FakeWebsocketDataGenerator.getInstance().setWebSocketManager(FakeWebSocketManager.getInstance());
+        //FakeWebsocketDataGenerator.getInstance().startGenerator();
+        //new Handler().postDelayed(() -> FakeWebsocketDataGenerator.getInstance().shutdownGenerator(), 60000);
 
-        FakeWebSocketManager.getInstance().init();
-
-        FakeWebsocketDataGenerator.getInstance().setWebSocketManager(FakeWebSocketManager.getInstance());
-        FakeWebsocketDataGenerator.getInstance().startGenerator();
-
-        new Handler().postDelayed(() -> FakeWebsocketDataGenerator.getInstance().shutdownGenerator(), 60000);
-
+        ServiceProvider.getUserService()
+                .fetchProfile(900332)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new ResponseSubscriber<ProfileResponse>() {
+                    @Override
+                    public void onSuccess(ProfileResponse response) {
+                        Profile data = response.getData();
+                        final Gson gson = new Gson();
+                        L.e("return from service =:> profile = %s", gson.toJson(data));
+                    }
+                });
     }
 
     @Override

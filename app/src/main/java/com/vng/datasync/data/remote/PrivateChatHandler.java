@@ -17,7 +17,7 @@ import com.vng.datasync.data.remote.websocket.WebSocketManager;
 import com.vng.datasync.util.CollectionUtils;
 import com.vng.datasync.util.Logger;
 import com.vng.datasync.util.NotificationHelper;
-import com.vng.datasync.util.PrivateChatRequestHelper;
+import com.vng.datasync.util.RequestHelper;
 import com.vng.datasync.util.ProfileManager;
 
 import java.util.List;
@@ -50,7 +50,7 @@ public class PrivateChatHandler {
 
     private final RoomDatabaseManager mRoomDatabaseManager;
 
-    private final PrivateChatRequestHelper mRequestIdHelper;
+    private final RequestHelper mRequestHelper;
 
     private final ProfileManager mProfileManager;
 
@@ -93,7 +93,7 @@ public class PrivateChatHandler {
     public PrivateChatHandler(@Nonnull Context context) {
         mWorker = Executors.newSingleThreadExecutor();
         mRoomDatabaseManager = RoomDatabaseManager.getInstance();
-        mRequestIdHelper = PrivateChatRequestHelper.getInstance();
+        mRequestHelper = RequestHelper.getInstance();
         mProfileManager = ProfileManager.getInstance();
 
         mProfileManager.init(context);
@@ -130,7 +130,7 @@ public class PrivateChatHandler {
 
             updateMessageState(requestId, ChatMessage.STATE_SEND_SUCCESS);
 
-            mRequestIdHelper.remove(requestId);
+            mRequestHelper.remove(requestId);
 
             return;
         } else {
@@ -170,7 +170,7 @@ public class PrivateChatHandler {
 
         EventDispatcher.getInstance().post(Event.BLOCKED_PRIVATE_CHAT_EVENT);
 
-        mRequestIdHelper.remove(requestId);
+        mRequestHelper.remove(requestId);
     }
 
     private void createNotification(ChatMessage chatMessage) {
@@ -212,7 +212,7 @@ public class PrivateChatHandler {
     }
 
     public boolean contains(int requestId) {
-        return mRequestIdHelper.contains(requestId);
+        return mRequestHelper.contains(requestId);
     }
 
     public void handleOfflineChannels(final List<ZLive.ZAPIPrivateChatChannelMetaData> channelsList) {
@@ -278,7 +278,7 @@ public class PrivateChatHandler {
     }
 
     private void updateMessageState(int requestId, int state) {
-        long messageId = mRequestIdHelper.getMessageIdOfRequestId(requestId);
+        long messageId = mRequestHelper.getMessageIdOfRequestId(requestId);
         ChatMessageDBO dbo = mRoomDatabaseManager.findMessageById(messageId);
         dbo.state = state;
         mRoomDatabaseManager.updateMessage(dbo);

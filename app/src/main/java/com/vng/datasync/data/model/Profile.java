@@ -36,6 +36,10 @@ public class Profile {
 
     private transient @State int mState;
 
+    public Profile() {
+        mState = PROFILE_STATE_EMPTY;
+    }
+
     public String getAvatar() {
         return mAvatar;
     }
@@ -75,4 +79,6 @@ public class Profile {
     public boolean isSynced() {
         return mState == PROFILE_STATE_SYNCED;
     }
+
+    public static final Profile EMPTY = new Profile();
 }

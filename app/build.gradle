@@ -23,9 +23,16 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            buildConfigField "int", "ENV_MODE", "1"
+        }
+        staging {
+            buildConfigField "int", "ENV_MODE", "2"
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "int", "ENV_MODE", "3"
         }
     }
     compileOptions {

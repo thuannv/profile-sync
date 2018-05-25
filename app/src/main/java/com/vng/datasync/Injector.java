@@ -1,0 +1,40 @@
+package com.vng.datasync;
+
+import android.app.Application;
+
+import com.vng.datasync.data.ProfileRepository;
+import com.vng.datasync.data.remote.FakeUserService;
+import com.vng.datasync.data.remote.RestClient;
+import com.vng.datasync.data.remote.rest.api.UserService;
+
+/**
+ * @author thuannv
+ * @since 25/05/2018
+ *
+ * Simple class for resolving dependencies.
+ */
+public final class Injector {
+
+    private static Application sApplication;
+
+    private Injector() {}
+
+    static {
+        sApplication = DataSyncApp.getInstance();
+    }
+
+    public static RestClient providesRestClient() {
+        return RestClient.getInstance(sApplication);
+    }
+
+    public static ProfileRepository providesProfileRepository() {
+        return ProfileRepository.getInstance();
+    }
+
+    public static UserService providesUserService() {
+        if (Environment.current().isDevelopment()) {
+            return new FakeUserService(providesProfileRepository());
+        }
+        return providesRestClient().create(UserService.class);
+    }
+}

@@ -1,5 +1,6 @@
 package com.vng.datasync.util;
 
+import android.annotation.SuppressLint;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
@@ -19,36 +20,34 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @since 25/09/2017
  */
 
-public class PrivateChatRequestHelper {
+public final class RequestHelper {
 
     private static final boolean DEBUG = true;
 
-    private static final Logger L = Logger.getLogger(PrivateChatRequestHelper.class, BuildConfig.DEBUG && DEBUG);
+    private static final Logger L = Logger.getLogger(RequestHelper.class, BuildConfig.DEBUG && DEBUG);
 
     private final AtomicInteger mAutoIncrementId = new AtomicInteger(0);
 
+    @SuppressLint("UseSparseArrays")
     private final Map<Integer, Long> mRequests = Collections.synchronizedMap(new HashMap<>());
 
-    private static volatile PrivateChatRequestHelper sInstance = null;
-
-    private Looper mLooper;
+    private static volatile RequestHelper sInstance = null;
 
     private Handler mWorker;
 
-    private PrivateChatRequestHelper() {
+    private RequestHelper() {
         HandlerThread t = new HandlerThread("private_chat_worker_thread");
         t.start();
-        mLooper = t.getLooper();
-        mWorker = new Handler(mLooper);
+        mWorker = new Handler(t.getLooper());
     }
 
-    public static PrivateChatRequestHelper getInstance() {
-        PrivateChatRequestHelper instance = sInstance;
+    public static RequestHelper getInstance() {
+        RequestHelper instance = sInstance;
         if (instance == null) {
-            synchronized (PrivateChatRequestHelper.class) {
+            synchronized (RequestHelper.class) {
                 instance = sInstance;
                 if (instance == null) {
-                    instance = sInstance = new PrivateChatRequestHelper();
+                    instance = sInstance = new RequestHelper();
                 }
             }
         }
@@ -64,7 +63,7 @@ public class PrivateChatRequestHelper {
         return messageId == null ? 0 : messageId;
     }
 
-    public void add(int requestId, long messageId) {
+    private void add(int requestId, long messageId) {
         mRequests.put(requestId, messageId);
     }
 
@@ -76,30 +75,31 @@ public class PrivateChatRequestHelper {
         mRequests.remove(requestId);
     }
 
-    public void addRequest(int requestId, long messageId, ZLive.ZAPIPrivateChatItem chatItem, long timeout, SendChatTimeOutCallback callback) {
+    public void addRequest(int requestId, long messageId, ZLive.ZAPIPrivateChatItem chatItem, long timeout, OnRequestTimeOut callback) {
         add(requestId, messageId);
-        post(new ChatRequestTimeOut(requestId, chatItem, callback), timeout);
+        post(new RequestTimeOut(requestId, chatItem, callback), timeout);
     }
 
-    public void post(Runnable task, long delay) {
-        if (task == null) {
-            return;
-        }
-
-        if (delay <= 0) {
-            mWorker.post(task);
-        } else {
+    private void post(Runnable task, long delay) {
+        if (task != null) {
             mWorker.postDelayed(task, delay);
         }
     }
 
-    public final static class ChatRequestTimeOut implements Runnable {
+    /**
+     * {@link RequestTimeOut}
+     * Class is responsible for removing request which is timeout and notifying request was timeout
+     * to whom it may concern in order to properly handle the request logic.
+     */
+    public final static class RequestTimeOut implements Runnable {
 
         private final int mRequestId;
-        private final ZLive.ZAPIPrivateChatItem mChatItem;
-        private final SendChatTimeOutCallback mCallback;
 
-        public ChatRequestTimeOut(int requestId, ZLive.ZAPIPrivateChatItem chatItem, SendChatTimeOutCallback callback) {
+        private final ZLive.ZAPIPrivateChatItem mChatItem;
+
+        private final OnRequestTimeOut mCallback;
+
+        RequestTimeOut(int requestId, ZLive.ZAPIPrivateChatItem chatItem, OnRequestTimeOut callback) {
             if (requestId <= 0) {
                 throw new IllegalArgumentException("requestId must be positive.");
             }
@@ -110,7 +110,7 @@ public class PrivateChatRequestHelper {
 
         @Override
         public void run() {
-            PrivateChatRequestHelper helper = PrivateChatRequestHelper.getInstance();
+            RequestHelper helper = RequestHelper.getInstance();
             if (helper.contains(mRequestId)) {
                 if (mCallback != null) {
                     mCallback.onTimeOut(mRequestId, mChatItem);
@@ -120,7 +120,11 @@ public class PrivateChatRequestHelper {
         }
     }
 
-    public interface SendChatTimeOutCallback {
+    /**
+     * {@link OnRequestTimeOut}
+     * Callback for listening on a particular request if it was timeout.
+     */
+    public interface OnRequestTimeOut {
         void onTimeOut(int requestId, ZLive.ZAPIPrivateChatItem chatItem);
     }
 

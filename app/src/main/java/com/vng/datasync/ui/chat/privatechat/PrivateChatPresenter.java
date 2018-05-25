@@ -15,7 +15,7 @@ import com.vng.datasync.data.remote.MessageHelper;
 import com.vng.datasync.data.remote.websocket.WebSocketManager;
 import com.vng.datasync.ui.BasePresenter;
 import com.vng.datasync.util.Logger;
-import com.vng.datasync.util.PrivateChatRequestHelper;
+import com.vng.datasync.util.RequestHelper;
 import com.vng.datasync.util.RxUtils;
 import com.vng.datasync.util.SimpleSubscriber;
 
@@ -41,11 +41,11 @@ public abstract class PrivateChatPresenter<T extends PrivateChatView> extends Ba
 
     private final RoomDatabaseManager mRoomDatabaseManager;
 
-    private final PrivateChatRequestHelper mRequestIdHelper;
+    private final RequestHelper mRequestIdHelper;
 
     private final CompositeSubscription mCompositeSubscription;
 
-    private final PrivateChatRequestHelper.SendChatTimeOutCallback mTimeOutCallback;
+    private final RequestHelper.OnRequestTimeOut mTimeOutCallback;
 
     public PrivateChatPresenter() {
         mContext = DataSyncApp.getInstance().getApplicationContext();
@@ -57,7 +57,7 @@ public abstract class PrivateChatPresenter<T extends PrivateChatView> extends Ba
 
         mRoomDatabaseManager = RoomDatabaseManager.getInstance();
 
-        mRequestIdHelper = PrivateChatRequestHelper.getInstance();
+        mRequestIdHelper = RequestHelper.getInstance();
 
         mCompositeSubscription = new CompositeSubscription();
 
