@@ -1,10 +1,13 @@
 package com.vng.datasync.data.remote;
 
 import com.google.protobuf.ByteString;
+import com.vng.datasync.data.local.room.MessageIdGenerator;
 import com.vng.datasync.protobuf.ZLive;
 import com.vng.datasync.BuildConfig;
 import com.vng.datasync.Constants;
 import com.vng.datasync.util.AndroidUtilities;
+
+import java.util.UUID;
 
 /**
  * Copyright (C) 2017, VNG Corporation.
@@ -34,6 +37,19 @@ public final class MessageHelper {
                 .build();
     }
 
+    public static ZLive.ZAPIPrivateChatItem createFakeChatItem(int ownerId, String message, int contactId, long predictCreatedTime, int channelType) {
+        MessageIdGenerator instance = MessageIdGenerator.getInstance();
+        int messageId = instance.generateId();
+        return ZLive.ZAPIPrivateChatItem.newBuilder()
+                .setMessageId(messageId)
+                .setOwnerId(ownerId)
+                .setMessage(message)
+                .setReceiverId(contactId)
+                .setCreatedTime(predictCreatedTime)
+                .setChannelType(channelType)
+                .build();
+    }
+
     public static ZLive.ZAPIPrivateChatChannelMetaData createConfirmSyncedChannelData(int syncedOwnerId) {
         return ZLive.ZAPIPrivateChatChannelMetaData.newBuilder()
                 .setOwnerId(syncedOwnerId)
@@ -49,6 +65,13 @@ public final class MessageHelper {
 
     public static byte[] createMessage(int commandId, ByteString data) {
         return createBaseBuilder(commandId, data)
+                .build()
+                .toByteArray();
+    }
+
+    public static byte[] createMessage(int commandId, int subCommandId, ByteString data) {
+        return createBaseBuilder(commandId, data)
+                .setSubCmd(subCommandId)
                 .build()
                 .toByteArray();
     }

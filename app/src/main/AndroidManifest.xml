@@ -3,6 +3,7 @@
           package="com.vng.datasync">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".DataSyncApp"
@@ -14,14 +15,19 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".ui.HomeActivity">
+
+        </activity>
+
+        <activity android:name=".ui.chat.privatechat.contactchat.ContactChatActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".ui.chat.ConversationsActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
-        <activity android:name=".ui.chat.privatechat.contactchat.ContactChatActivity" />
-
     </application>
 
 </manifest>

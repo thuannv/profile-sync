@@ -1,8 +1,13 @@
 package com.vng.datasync.data.remote.websocket;
 
 import com.google.gson.Gson;
+import com.vng.datasync.DataSyncApp;
+import com.vng.datasync.R;
 import com.vng.datasync.data.DataProvider;
 import com.vng.datasync.data.model.Profile;
+import com.vng.datasync.data.remote.Commands;
+import com.vng.datasync.data.remote.MessageHelper;
+import com.vng.datasync.protobuf.ZLive;
 import com.vng.datasync.util.Logger;
 
 import java.lang.ref.WeakReference;
@@ -92,7 +97,7 @@ public final class FakeWebsocketDataGenerator {
             while (mIsRunning && generator != null) {
                 generator.generate();
                 try {
-                    Thread.sleep(random.nextInt(200));
+                    Thread.sleep(200);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -101,11 +106,18 @@ public final class FakeWebsocketDataGenerator {
         }
     }
 
+    private static final int[] mRandomStrings = {R.string.lorum_1, R.string.lorum_2, R.string.lorum_3, R.string.lorum_4};
     Gson mGson = new Gson();
     private void generate() {
-        final Profile profile = mDataProvider.random();
+        final Profile profile = mDataProvider.randomInRange();
         if (profile != null) {
             L.d("*** generate() -> profile = %s ***", mGson.toJson(profile));
+
+            Random r = new Random();
+            String chatMessage = DataSyncApp.getInstance().getString(mRandomStrings[r.nextInt(mRandomStrings.length)]);
+            final ZLive.ZAPIPrivateChatItem chatItem = MessageHelper.createFakeChatItem(profile.getUserId(), chatMessage, 1, System.currentTimeMillis(), 0);
+            final byte[] message = MessageHelper.createMessage(Commands.CMD_NOTIFY_STREAM, Commands.SUB_CMD_NOTIFY_RECEIVED_PRIVATE_CHAT, chatItem.toByteString());
+            mWebSocketManager.onReceived(message);
         }
     }
 }

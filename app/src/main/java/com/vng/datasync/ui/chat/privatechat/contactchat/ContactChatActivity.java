@@ -32,12 +32,11 @@ import com.vng.datasync.GlideApp;
 import com.vng.datasync.R;
 import com.vng.datasync.data.ChatConversation;
 import com.vng.datasync.data.ChatMessage;
-import com.vng.datasync.data.event.Event;
-import com.vng.datasync.data.event.EventDispatcher;
-import com.vng.datasync.data.event.EventListener;
+import com.vng.datasync.event.Event;
+import com.vng.datasync.event.EventDispatcher;
+import com.vng.datasync.event.EventListener;
 import com.vng.datasync.data.model.Profile;
-import com.vng.datasync.data.remote.PrivateChatHandler;
-import com.vng.datasync.data.remote.websocket.WebSocketManager;
+import com.vng.datasync.data.remote.ChatHandler;
 import com.vng.datasync.ui.chat.privatechat.PrivateChatAdapter;
 import com.vng.datasync.ui.chat.privatechat.PrivateChatViewModel;
 import com.vng.datasync.ui.widget.CircleImageView;
@@ -194,7 +193,7 @@ public class ContactChatActivity extends AppCompatActivity implements ContactCha
 
         mCurrentContact = mProfileManager.get(mCurrentConversation.getContactId());
 
-        PrivateChatHandler.setCurrentVisibleChannel(mCurrentConversation.getContactId());
+        ChatHandler.setCurrentVisibleChannel(mCurrentConversation.getContactId());
 
         setAvatarAndTitle();
 
@@ -213,7 +212,7 @@ public class ContactChatActivity extends AppCompatActivity implements ContactCha
     protected void onStart() {
         super.onStart();
 
-        PrivateChatHandler.setCurrentVisibleChannel(mCurrentConversation.getContactId());
+        ChatHandler.setCurrentVisibleChannel(mCurrentConversation.getContactId());
 
         registerListener();
     }
@@ -222,7 +221,7 @@ public class ContactChatActivity extends AppCompatActivity implements ContactCha
     protected void onStop() {
         unregisterListener();
 
-        PrivateChatHandler.setCurrentVisibleChannel(0);
+        ChatHandler.setCurrentVisibleChannel(0);
 
         super.onStop();
     }
@@ -380,12 +379,7 @@ public class ContactChatActivity extends AppCompatActivity implements ContactCha
     public void onSendClick() {
         String message = mMessageEditText.getText().toString();
 
-        if (!canSendMessage(message)) {
-            return;
-        }
-
-        if (!WebSocketManager.getInstance().isConnected()) {
-            AndroidUtilities.showToast(getString(R.string.message_cannot_connect_server));
+        if (!isValidMessage(message)) {
             return;
         }
 
@@ -398,7 +392,7 @@ public class ContactChatActivity extends AppCompatActivity implements ContactCha
         mMessageEditText.setText("");
     }
 
-    private boolean canSendMessage(String message) {
+    private boolean isValidMessage(String message) {
         return !TextUtils.isEmpty(message) && mCurrentConversation != null;
     }
 
@@ -586,7 +580,7 @@ public class ContactChatActivity extends AppCompatActivity implements ContactCha
         }
 
         private void notifyNewMessageIfNeeded(ChatMessage chatMessage) {
-            if (PrivateChatHandler.isChannelVisible(chatMessage.getFriendId())) {
+            if (ChatHandler.isChannelVisible(chatMessage.getFriendId())) {
                 mHandler.obtainMessage(MESSAGE_NEW_CHAT_MESSAGE, chatMessage).sendToTarget();
             }
         }

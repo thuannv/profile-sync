@@ -47,6 +47,7 @@ public class RoomDatabaseManager {
         @Override
         public void migrate(@NonNull SupportSQLiteDatabase database) {
             database.execSQL("CREATE TABLE friend_requests(id INTEGER PRIMARY KEY AUTOINCREMENT, total_friend_requests INTEGER)");
+            database.execSQL("ALTER TABLE messages ADD COLUMN state INTEGER DEFAULT 0");
         }
     };
 
@@ -240,5 +241,12 @@ public class RoomDatabaseManager {
         }
 
         return conversation;
+    }
+
+    public Observable<Integer> getLargestMessageId() {
+        return Observable.defer(() -> {
+            Integer largestMessageId = mChatMessageDao.getLargestMessageId();
+            return Observable.just(largestMessageId == null ? 0 : largestMessageId);
+        });
     }
 }

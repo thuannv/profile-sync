@@ -4,8 +4,8 @@ import android.content.Context;
 import android.util.SparseArray;
 
 import com.vng.datasync.BuildConfig;
-import com.vng.datasync.data.event.Event;
-import com.vng.datasync.data.event.EventDispatcher;
+import com.vng.datasync.event.Event;
+import com.vng.datasync.event.EventDispatcher;
 import com.vng.datasync.data.local.room.ProfileRepository;
 import com.vng.datasync.data.local.room.RoomDatabaseManager;
 import com.vng.datasync.data.model.Profile;
@@ -199,7 +199,6 @@ public final class ProfileManager {
                             public void onSuccess(ProfileResponse profileResponse) {
                                 Profile syncedProfile = profileResponse.getData();
                                 syncedProfile.setState(Profile.State.PROFILE_STATE_SYNCED);
-                                mProfileManager.addToCache(syncedProfile);
                                 mProfileManager.save(syncedProfile);
                                 EventDispatcher.getInstance().post(Event.PROFILE_SYNC_SUCCESS, mProfileId);
                             }

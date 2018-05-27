@@ -13,7 +13,7 @@
     app:contentInsetStart="0dp">
 
     <!--Title-->
-    <com.vng.live.ui.widget.CustomFontTextView
+    <com.vng.datasync.ui.widget.CustomFontTextView
         android:id="@+id/tv_toolbar_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

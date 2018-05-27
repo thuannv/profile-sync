@@ -10,6 +10,8 @@ import com.vng.datasync.data.model.roomdb.ChatMessageDBO;
 
 import java.util.List;
 
+import rx.Observable;
+
 
 /**
  * Copyright (C) 2017, VNG Corporation.
@@ -51,4 +53,10 @@ public interface ChatMessageDao {
 
     @Update
     void updateMessage(ChatMessageDBO message);
+
+    @Query("SELECT message_id " +
+            "FROM messages " +
+            "ORDER BY message_id DESC " +
+            "LIMIT 1")
+    Integer getLargestMessageId();
 }

@@ -2,18 +2,20 @@ package com.vng.datasync.data.remote;
 
 import android.content.Context;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.vng.datasync.BuildConfig;
 import com.vng.datasync.Constants;
 import com.vng.datasync.Injector;
 import com.vng.datasync.data.ChatConversation;
 import com.vng.datasync.data.ChatMessage;
-import com.vng.datasync.data.event.Event;
-import com.vng.datasync.data.event.EventDispatcher;
+import com.vng.datasync.event.Event;
+import com.vng.datasync.event.EventDispatcher;
+import com.vng.datasync.data.local.UserManager;
 import com.vng.datasync.data.local.room.RoomDatabaseManager;
 import com.vng.datasync.data.model.Profile;
 import com.vng.datasync.data.model.roomdb.ChatMessageDBO;
-import com.vng.datasync.data.remote.websocket.WebSocketManager;
 import com.vng.datasync.data.remote.websocket.WebSocketManagerInf;
 import com.vng.datasync.protobuf.ZLive;
 import com.vng.datasync.util.CollectionUtils;
@@ -27,8 +29,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import javax.annotation.Nonnull;
-
 /**
  * Copyright (C) 2017, VNG Corporation.
  *
@@ -36,25 +36,27 @@ import javax.annotation.Nonnull;
  * @since 25/09/2017
  */
 
-public class PrivateChatHandler {
+public class ChatHandler {
+
+    private static ChatHandler sInstance = null;
 
     private static volatile boolean sIsSyncingMessages = false;
 
     private static final boolean DEBUG = true;
 
-    private static final Logger L = Logger.getLogger(PrivateChatHandler.class, BuildConfig.DEBUG && DEBUG);
+    private static final Logger L = Logger.getLogger(ChatHandler.class, BuildConfig.DEBUG && DEBUG);
 
     private static volatile long sCurrentContactId = 0;
 
     private final Handler mWatchDogsHandler = new Handler();
 
-    private final ExecutorService mWorker;
+    private ExecutorService mWorker;
 
-    private final RoomDatabaseManager mRoomDatabaseManager;
+    private RoomDatabaseManager mRoomDatabaseManager;
 
-    private final RequestHelper mRequestHelper;
+    private RequestHelper mRequestHelper;
 
-    private final ProfileManager mProfileManager;
+    private ProfileManager mProfileManager;
 
     private AtomicInteger mJobCount;
 
@@ -75,6 +77,10 @@ public class PrivateChatHandler {
         }
     };
 
+    public static ChatHandler getInstance() {
+        return Holder.INSTANCE;
+    }
+
     private void startWatchingDogs() {
         try {
             mStartSyncTime = System.currentTimeMillis();
@@ -94,12 +100,16 @@ public class PrivateChatHandler {
         mStartSyncTime = 0;
     }
 
-    public PrivateChatHandler(@Nonnull Context context) {
+    private ChatHandler() {
+    }
+
+    public void init(@NonNull Context context) {
         mWorker = Executors.newSingleThreadExecutor();
         mRoomDatabaseManager = RoomDatabaseManager.getInstance();
         mRequestHelper = RequestHelper.getInstance();
         mProfileManager = ProfileManager.getInstance();
         mWebSocketManager = Injector.providesWebSocketManager();
+        mWebSocketManager.setChatHandler(this);
 
         mProfileManager.init(context);
         mRoomDatabaseManager.initForUser(context);
@@ -168,6 +178,66 @@ public class PrivateChatHandler {
                 }
             }
         });
+    }
+
+    public void handleOnlinePrivateChat(int subCommandId, ZLive.ZAPIMessage message) throws InvalidProtocolBufferException {
+        ZLive.ZAPIPrivateChatItem chatItem = ZLive.ZAPIPrivateChatItem.parseFrom(message.getData());
+        int requestId = message.getRequestId();
+        int userId = UserManager.getCurrentUser().getUserId();
+
+        switch (subCommandId) {
+            case Commands.SUB_CMD_NOTIFY_RECEIVED_PRIVATE_CHAT:
+                handlePrivateChatMessage(subCommandId, requestId, chatItem);
+                break;
+
+            case Commands.SUB_CMD_NOTIFY_SUCCESS:
+                L.e("Receive echo message, requestId = %d", message.getRequestId());
+                if (contains(requestId) && userId == chatItem.getOwnerId()) {
+                    handleSendChatSuccess(subCommandId, requestId, chatItem);
+                }
+                break;
+
+            case Commands.SUB_CMD_NOTIFY_BLOCKED_PRIVATE_CHAT:
+                handleBlockedChat(requestId);
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    public void handleOfflineMessagesSyncing(int subCommandId, ZLive.ZAPIMessage message) throws InvalidProtocolBufferException {
+        if (subCommandId == Commands.SUB_CMD_NOTIFY_PRIVATE_CHAT_UNREAD) {
+            handleUnreadChannels(message);
+        } else if (subCommandId == Commands.SUB_CMD_NOTIFY_PRIVATE_CHAT_UNREAD_RESPONSE) {
+            handleUnreadMessages(message);
+        }
+    }
+
+    private void handleUnreadChannels(ZLive.ZAPIMessage message) throws InvalidProtocolBufferException {
+        ZLive.ZAPIPrivateChatUnread chatUnread = ZLive.ZAPIPrivateChatUnread.parseFrom(message.getData());
+
+        List<ZLive.ZAPIPrivateChatChannelMetaData> channelsList = chatUnread.getChatChannelsList();
+
+        handleOfflineChannels(channelsList);
+    }
+
+    private void handleUnreadMessages(ZLive.ZAPIMessage message) throws InvalidProtocolBufferException {
+        ZLive.ZAPIPrivateChatUnreadResponse chatUnreadResponse = ZLive.ZAPIPrivateChatUnreadResponse.parseFrom(message.getData());
+
+        List<ZLive.ZAPIPrivateChatItem> chatItemsList = chatUnreadResponse.getChatItemsList();
+
+        handleOfflineMessages(chatItemsList);
+    }
+
+    private void handleSendChatSuccess(int subCommandId, int requestId, ZLive.ZAPIPrivateChatItem chatItem) {
+        int newSubCommandId = Commands.SUB_CMD_NOTIFY_SEND_CHAT_SUCCESS;
+
+        if (subCommandId == Commands.SUB_CMD_NOTIFY_ERROR) {
+            newSubCommandId = Commands.SUB_CMD_NOTIFY_SEND_CHAT_ERROR;
+        }
+
+        handlePrivateChatMessage(newSubCommandId, requestId, chatItem);
     }
 
     public void handleBlockedChat(int requestId) {
@@ -298,5 +368,12 @@ public class PrivateChatHandler {
         return !isSyncingMessages()
                 && (System.currentTimeMillis() - lastSyncTimestamp > Constants.OFFLINE_MSG_SYNC_INTERVAL)
                 && wsManager.isConnected();
+    }
+
+    /**
+     * {@link Holder}
+     */
+    private static class Holder {
+        private static final ChatHandler INSTANCE = new ChatHandler();
     }
 }

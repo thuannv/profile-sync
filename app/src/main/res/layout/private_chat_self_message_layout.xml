@@ -31,7 +31,7 @@
         android:orientation="vertical">
 
         <!-- Message content text -->
-        <com.vng.live.ui.widget.CustomFontTextView
+        <com.vng.datasync.ui.widget.CustomFontTextView
             android:id="@+id/message_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
             tools:text="hi."/>
 
         <!-- Send fail alert -->
-        <com.vng.live.ui.widget.CustomFontTextView
+        <com.vng.datasync.ui.widget.CustomFontTextView
             android:id="@+id/alert_send_fail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
             android:visibility="gone"/>
 
         <!-- Message created time -->
-        <com.vng.live.ui.widget.CustomFontTextView
+        <com.vng.datasync.ui.widget.CustomFontTextView
             android:id="@+id/message_created_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

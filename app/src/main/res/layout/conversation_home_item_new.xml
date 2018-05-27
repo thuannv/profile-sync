@@ -7,7 +7,7 @@
     android:layout_height="77dp"
     android:background="?attr/selectableItemBackground">
 
-    <com.vng.live.ui.widget.CircleImageView
+    <com.vng.datasync.ui.widget.CircleImageView
         android:id="@+id/avatar"
         android:layout_width="39dp"
         android:layout_height="39dp"
@@ -35,7 +35,7 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.5" />
 
-    <com.vng.live.ui.widget.CustomFontTextView
+    <com.vng.datasync.ui.widget.CustomFontTextView
         android:id="@+id/title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
         app:layout_constraintStart_toStartOf="@id/subtitle"
         tools:text="abcdef" />
 
-    <com.vng.live.ui.widget.CustomFontTextView
+    <com.vng.datasync.ui.widget.CustomFontTextView
         android:id="@+id/subtitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
         app:layout_constraintTop_toBottomOf="@id/middle_guideline"
         tools:text="abcdef" />
 
-    <com.vng.live.ui.widget.CustomFontTextView
+    <com.vng.datasync.ui.widget.CustomFontTextView
         android:id="@+id/message_count"
         android:layout_width="wrap_content"
         android:layout_height="17.3dp"
@@ -87,7 +87,7 @@
         tools:text="99" />
 
     <!--Last modified time-->
-    <com.vng.live.ui.widget.CustomFontTextView
+    <com.vng.datasync.ui.widget.CustomFontTextView
         android:id="@+id/last_message_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -64,6 +64,7 @@ public final class Mappers {
 
             ChatMessage chatMessage = new ChatMessage(dbo.id, chatItem);
             chatMessage.setRead(dbo.unreadFlag == 0);
+            chatMessage.setState(dbo.state == null ? 0 : dbo.state);
 
             return chatMessage;
         }
@@ -86,26 +87,7 @@ public final class Mappers {
             dbo.roomId = chatMessage.getRoomId();
             dbo.senderId = chatMessage.getSenderId();
             dbo.unreadFlag = chatMessage.isRead() ? 0 : 1;
-        }
-
-        return dbo;
-    };
-
-    public static final Mapper<ChatMessage, ChatMessageDBO> FROM_OFFICIAL_CHAT_MESSAGE_TO_DBO = chatMessage -> {
-        ChatMessageDBO dbo = new ChatMessageDBO();
-
-        if (chatMessage != null) {
-            dbo.attachmentId = chatMessage.getAttachmentId();
-            dbo.attachmentType = chatMessage.getAttachmentType();
-            dbo.channelId = chatMessage.getChannelId();
-            dbo.createdTime = chatMessage.getCreatedTime();
-            dbo.message = chatMessage.getJsonMessage();
-            dbo.messageId = chatMessage.getMessageId();
-            dbo.messageType = chatMessage.getMessageType();
-            dbo.receiverId = chatMessage.getReceiverId();
-            dbo.roomId = chatMessage.getRoomId();
-            dbo.senderId = chatMessage.getSenderId();
-            dbo.unreadFlag = chatMessage.isRead() ? 0 : 1;
+            dbo.state = chatMessage.getState();
         }
 
         return dbo;
@@ -118,6 +100,7 @@ public final class Mappers {
             profile.setUserId(dbo.userId);
             profile.setDisplayName(dbo.displayName);
             profile.setAvatar(dbo.avatar);
+            profile.setState(dbo.state);
         }
 
         return profile;
@@ -130,6 +113,7 @@ public final class Mappers {
             dbo.userId = profile.getUserId();
             dbo.displayName = profile.getDisplayName();
             dbo.avatar = profile.getAvatar();
+            dbo.state = profile.getState();
         }
 
         return dbo;

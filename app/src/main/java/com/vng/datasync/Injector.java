@@ -3,6 +3,7 @@ package com.vng.datasync;
 import android.app.Application;
 
 import com.vng.datasync.data.ProfileRepository;
+import com.vng.datasync.data.local.room.RoomDatabaseManager;
 import com.vng.datasync.data.remote.FakeUserService;
 import com.vng.datasync.data.remote.RestClient;
 import com.vng.datasync.data.remote.rest.api.UserService;
@@ -46,5 +47,9 @@ public final class Injector {
             return FakeWebSocketManager.getInstance();
         }
         return WebSocketManager.getInstance();
+    }
+
+    public static RoomDatabaseManager providesDatabaseManager() {
+        return RoomDatabaseManager.getInstance();
     }
 }

@@ -37,6 +37,10 @@ public final class DataProvider {
 
     private final Random mRandom = new Random();
 
+    private int mStartRandomIdRange;
+
+    private int mRandomRange = 20;
+
     private DataProvider() {
     }
 
@@ -80,6 +84,9 @@ public final class DataProvider {
                 mIdProfilesMap.put(profile.getUserId(), profile);
             }
         }
+
+        int size = mProfiles.size();
+        mStartRandomIdRange = mRandom.nextInt(size - mRandomRange);
     }
 
     private void asyncInitialize(@NonNull Context context) {
@@ -114,6 +121,17 @@ public final class DataProvider {
             mInitLatch.await();
             int size = mProfiles.size();
             int i = mRandom.nextInt(size);
+            return mProfiles.get(i);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Profile randomInRange() {
+        try {
+            mInitLatch.await();
+            int i = mRandom.nextInt(mRandomRange) + mStartRandomIdRange;
             return mProfiles.get(i);
         } catch (InterruptedException e) {
             e.printStackTrace();

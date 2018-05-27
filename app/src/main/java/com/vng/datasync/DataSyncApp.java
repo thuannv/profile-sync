@@ -9,7 +9,10 @@ import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.vng.datasync.data.DataProvider;
 import com.vng.datasync.data.ProfileRepository;
+import com.vng.datasync.data.local.room.MessageIdGenerator;
+import com.vng.datasync.data.local.room.RoomDatabaseManager;
 import com.vng.datasync.data.model.Profile;
+import com.vng.datasync.data.remote.ChatHandler;
 import com.vng.datasync.data.remote.ServiceProvider;
 import com.vng.datasync.data.remote.rest.response.ProfileResponse;
 import com.vng.datasync.data.remote.rest.response.Response;
@@ -72,14 +75,19 @@ public class DataSyncApp extends Application {
 //                        }
 //                    }
 //                });
+        ChatHandler.getInstance().init(this);
+
+        MessageIdGenerator.getInstance().init();
 
         DataProvider.getInstance().init(this);
 
-        FakeWebSocketManager.getInstance().init();
+        Injector.providesWebSocketManager().connect();
 
-        //FakeWebsocketDataGenerator.getInstance().setWebSocketManager(FakeWebSocketManager.getInstance());
-        //FakeWebsocketDataGenerator.getInstance().startGenerator();
-        //new Handler().postDelayed(() -> FakeWebsocketDataGenerator.getInstance().shutdownGenerator(), 60000);
+        RoomDatabaseManager.getInstance().initForUser(DataSyncApp.getInstance());
+
+//        FakeWebsocketDataGenerator.getInstance().setWebSocketManager(FakeWebSocketManager.getInstance());
+//        FakeWebsocketDataGenerator.getInstance().startGenerator();
+//        new Handler().postDelayed(() -> FakeWebsocketDataGenerator.getInstance().shutdownGenerator(), 5000);
 
         ServiceProvider.getUserService()
                 .fetchProfile(900332)

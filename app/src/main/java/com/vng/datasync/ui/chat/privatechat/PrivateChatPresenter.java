@@ -3,8 +3,8 @@ package com.vng.datasync.ui.chat.privatechat;
 import android.content.Context;
 
 import com.google.protobuf.ByteString;
-import com.vng.datasync.protobuf.ZLive;
 import com.vng.datasync.DataSyncApp;
+import com.vng.datasync.R;
 import com.vng.datasync.data.ChatMessage;
 import com.vng.datasync.data.local.User;
 import com.vng.datasync.data.local.UserManager;
@@ -12,13 +12,18 @@ import com.vng.datasync.data.local.room.RoomDatabaseManager;
 import com.vng.datasync.data.model.roomdb.ChatMessageDBO;
 import com.vng.datasync.data.remote.Commands;
 import com.vng.datasync.data.remote.MessageHelper;
-import com.vng.datasync.data.remote.websocket.WebSocketManager;
+import com.vng.datasync.data.remote.websocket.FakeWebSocketManager;
+import com.vng.datasync.protobuf.ZLive;
 import com.vng.datasync.ui.BasePresenter;
+import com.vng.datasync.util.AndroidUtilities;
 import com.vng.datasync.util.Logger;
 import com.vng.datasync.util.RequestHelper;
 import com.vng.datasync.util.RxUtils;
 import com.vng.datasync.util.SimpleSubscriber;
 
+import java.util.Random;
+
+import rx.Completable;
 import rx.Subscription;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
@@ -37,7 +42,7 @@ public abstract class PrivateChatPresenter<T extends PrivateChatView> extends Ba
 
     private final User mUser;
 
-    private final WebSocketManager mWebSocketConnectionManager;
+    private final FakeWebSocketManager mWebSocketConnectionManager;
 
     private final RoomDatabaseManager mRoomDatabaseManager;
 
@@ -52,7 +57,7 @@ public abstract class PrivateChatPresenter<T extends PrivateChatView> extends Ba
 
         mUser = UserManager.getCurrentUser();
 
-        mWebSocketConnectionManager = WebSocketManager.getInstance();
+        mWebSocketConnectionManager = FakeWebSocketManager.getInstance();
         mWebSocketConnectionManager.connect();
 
         mRoomDatabaseManager = RoomDatabaseManager.getInstance();
@@ -78,14 +83,19 @@ public abstract class PrivateChatPresenter<T extends PrivateChatView> extends Ba
     }
 
     public void getOfflineMessages(long lastModifiedTimestamp) {
-            byte[] message = MessageHelper.createMessage(Commands.CMD_CHAT_PRIVATE_REQUEST_UNREAD, ByteString.EMPTY);
+        byte[] message = MessageHelper.createMessage(Commands.CMD_CHAT_PRIVATE_REQUEST_UNREAD, ByteString.EMPTY);
 
-            mWebSocketConnectionManager.send(message);
+        mWebSocketConnectionManager.send(message);
 
-            L.d("Offline messages-Send request offline channels success");
+        L.d("Offline messages-Send request offline channels success");
     }
 
     public void sendMessage(int contactId, long roomId, String message, int channelType, long predictedChatCreatedTime) {
+        if (!mWebSocketConnectionManager.isConnected()) {
+            AndroidUtilities.showToast(R.string.message_cannot_connect_server);
+            return;
+        }
+
         int requestId = mRequestIdHelper.getNextRequestId();
 
         ZLive.ZAPIPrivateChatItem chatItem = MessageHelper.createChatItem(mUser.getUserId(),
@@ -104,7 +114,8 @@ public abstract class PrivateChatPresenter<T extends PrivateChatView> extends Ba
         chatMessage.setFriendId(contactId);
         chatMessage.setRead(true);
 
-        Subscription subscription = mRoomDatabaseManager.asyncInsertChatMessage(chatMessage).subscribeOn(Schedulers.io())
+        Subscription subscription = mRoomDatabaseManager.asyncInsertChatMessage(chatMessage)
+                .subscribeOn(Schedulers.io())
                 .subscribe(new SimpleSubscriber<Long>() {
                     @Override
                     public void onNext(Long messageId) {
@@ -115,6 +126,8 @@ public abstract class PrivateChatPresenter<T extends PrivateChatView> extends Ba
                                 mTimeOutCallback);
 
                         mWebSocketConnectionManager.send(zapiMessage);
+
+                        notifySentSuccess(chatItem, requestId);
                     }
 
                     @Override
@@ -146,5 +159,23 @@ public abstract class PrivateChatPresenter<T extends PrivateChatView> extends Ba
                 mTimeOutCallback);
 
         mWebSocketConnectionManager.send(zapiMessage);
+
+        notifySentSuccess(chatItem, requestId);
+    }
+
+    private void notifySentSuccess(ZLive.ZAPIPrivateChatItem chatItem, int requestId) {
+        Random r = new Random();
+        int random = r.nextInt(3);
+        if (random < 2) {
+            ZLive.ZAPIMessage.Builder builder = MessageHelper.createBaseBuilder(Commands.CMD_NOTIFY_STREAM, chatItem.toByteString());
+            byte[] successMessage = builder.setSubCmd(Commands.SUB_CMD_NOTIFY_SUCCESS)
+                    .setRequestId(requestId)
+                    .build()
+                    .toByteArray();
+
+            Completable.defer(() -> Completable.fromAction(() -> mWebSocketConnectionManager.onReceived(successMessage)))
+                    .subscribeOn(Schedulers.io())
+                    .subscribe();
+        }
     }
 }

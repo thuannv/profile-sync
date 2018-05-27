@@ -23,7 +23,7 @@
         android:visibility="gone"/>
 
     <!-- Input message edit text -->
-    <com.vng.live.ui.widget.CustomFontEditText
+    <com.vng.datasync.ui.widget.CustomFontEditText
         android:id="@+id/input_message"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

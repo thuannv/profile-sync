@@ -14,6 +14,7 @@ public class UserManager {
         if (mUser == null) {
             mUser = new User();
             mUser.setAccessToken("");
+            mUser.setUserId(1);
         }
 
         return mUser;

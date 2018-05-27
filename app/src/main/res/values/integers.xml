@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="random_message">
+        <item>@string/lorum_1</item>
+        <item>@string/lorum_2</item>
+        <item>@string/lorum_3</item>
+        <item>@string/lorum_4</item>
+    </integer-array>
+</resources>

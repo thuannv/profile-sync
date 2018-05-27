@@ -5,16 +5,16 @@ import android.content.Context;
 import android.os.Handler;
 import android.text.TextUtils;
 
+import com.vng.datasync.data.remote.ChatHandler;
 import com.vng.datasync.protobuf.ZLive;
 import com.vng.datasync.BuildConfig;
 import com.vng.datasync.DataSyncApp;
-import com.vng.datasync.data.event.Event;
-import com.vng.datasync.data.event.EventDispatcher;
+import com.vng.datasync.event.Event;
+import com.vng.datasync.event.EventDispatcher;
 import com.vng.datasync.data.local.User;
 import com.vng.datasync.data.local.UserManager;
 import com.vng.datasync.data.model.ConfigsData;
 import com.vng.datasync.data.remote.DataListener;
-import com.vng.datasync.data.remote.PrivateChatHandler;
 import com.vng.datasync.util.AndroidUtilities;
 import com.vng.datasync.util.Logger;
 import com.vng.datasync.util.NetworkUtils;
@@ -119,7 +119,7 @@ public final class WebSocketManager implements ConnectionObserver, WebSocketMana
 
     private WebSocketManager() {
         mContext = DataSyncApp.getInstance().getApplicationContext();
-        mWebSocketCompositeListener = new WebSocketCompositeListener(new PrivateChatHandler(mContext));
+        mWebSocketCompositeListener = new WebSocketCompositeListener();
     }
 
     private synchronized void setState(State newState) {
@@ -267,6 +267,13 @@ public final class WebSocketManager implements ConnectionObserver, WebSocketMana
             L.d("*** send() -> WebSocket is connected ***");
             //toast("send() -> WebSocket is connected -> sending message");
             mConnection.send(data);
+        }
+    }
+
+    @Override
+    public void setChatHandler(ChatHandler handler) {
+        if (mWebSocketCompositeListener != null) {
+            mWebSocketCompositeListener.setChatHandler(handler);
         }
     }
 

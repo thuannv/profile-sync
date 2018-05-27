@@ -51,8 +51,8 @@ public final class ChatRepository {
 
     public LiveData<List<ChatConversation>> getHomeConversation() {
         LiveData<List<ChatConversationDBO>> homeConversation = mRoomDatabaseManager.getHomeConversation();
-        MediatorLiveData<List<ChatConversationDBO>> liveData = new MediatorLiveData<>();
-        liveData.addSource(homeConversation, new DistinctChatConversationObserver(liveData));
+//        MediatorLiveData<List<ChatConversationDBO>> liveData = new MediatorLiveData<>();
+//        liveData.addSource(homeConversation, new DistinctChatConversationObserver(liveData));
         return Transformations.map(homeConversation, dboList -> {
             List<ChatConversation> ret = new ArrayList<>();
             for (ChatConversationDBO dbo : dboList) {
@@ -64,9 +64,9 @@ public final class ChatRepository {
 
     public LiveData<List<ChatMessage>> getMessagesListOfRoom(long roomId) {
         LiveData<List<ChatMessageDBO>> messages = mRoomDatabaseManager.getMessages(roomId);
-        MediatorLiveData<List<ChatMessageDBO>> liveData = new MediatorLiveData<>();
-        liveData.addSource(messages, new DistinctChatMessageObserver(liveData));
-        return Transformations.map(liveData, this::transformListChatDBO);
+//        MediatorLiveData<List<ChatMessageDBO>> liveData = new MediatorLiveData<>();
+//        liveData.addSource(messages, new DistinctChatMessageObserver(liveData));
+        return Transformations.map(messages, this::transformListChatDBO);
     }
 
     public void markMessagesRead(long roomId) {

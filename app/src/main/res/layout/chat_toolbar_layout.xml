@@ -23,7 +23,7 @@
             android:layout_width="32dp"
             android:layout_height="32dp">
 
-            <com.vng.live.ui.widget.CircleImageView
+            <com.vng.datasync.ui.widget.CircleImageView
                 android:id="@+id/contact_avatar"
                 android:layout_width="32dp"
                 android:layout_height="32dp"/>
@@ -35,7 +35,7 @@
                 android:visibility="gone"/>
         </FrameLayout>
 
-        <com.vng.live.ui.widget.CustomFontTextView
+        <com.vng.datasync.ui.widget.CustomFontTextView
             android:id="@+id/contact_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

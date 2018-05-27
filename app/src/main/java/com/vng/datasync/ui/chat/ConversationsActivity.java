@@ -4,29 +4,25 @@ import android.app.Dialog;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.vng.datasync.DataSyncApp;
 import com.vng.datasync.R;
 import com.vng.datasync.data.ChatConversation;
-import com.vng.datasync.data.event.Event;
-import com.vng.datasync.data.event.EventDispatcher;
-import com.vng.datasync.data.event.EventListener;
-import com.vng.datasync.data.local.room.RoomDatabaseManager;
+import com.vng.datasync.event.Event;
+import com.vng.datasync.event.EventDispatcher;
+import com.vng.datasync.event.EventListener;
 import com.vng.datasync.ui.chat.privatechat.contactchat.ContactChatActivity;
 import com.vng.datasync.ui.widget.DrawableDividerItemDecoration;
 import com.vng.datasync.util.DialogUtils;
@@ -46,7 +42,7 @@ import butterknife.Unbinder;
  * @since 14/08/2017
  */
 
-public class ConversationsFragment extends Fragment implements ConversationsView {
+public class ConversationsActivity extends AppCompatActivity implements ConversationsView {
 
     private static final int HANDLER_BASE_MESSAGE = 0;
 
@@ -77,24 +73,36 @@ public class ConversationsFragment extends Fragment implements ConversationsView
 
     private ConversationViewModel mConversationViewModel;
 
-    public static ConversationsFragment newInstance() {
-        ConversationsFragment f = new ConversationsFragment();
-        f.setArguments(new Bundle());
-        return f;
+//    public static ConversationsActivity newInstance() {
+//        ConversationsActivity f = new ConversationsActivity();
+//        f.setArguments(new Bundle());
+//        return f;
+//    }
+
+    public static Intent intentFor(Context context) {
+        return new Intent(context, ConversationsActivity.class);
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mPresenter = new ConversationsPresenter();
+        setContentView(R.layout.fragment_conversation_home);
 
-        mHandler = new EventHandler(this);
-
-        RoomDatabaseManager.getInstance().initForUser(DataSyncApp.getInstance());
+        mUnbinder = ButterKnife.bind(this);
 
         mConversationViewModel = ViewModelProviders.of(this).get(ConversationViewModel.class);
         mConversationViewModel.init();
+
+        initConversationList();
+
+        mPresenter = new ConversationsPresenter();
+        mPresenter.attachView(this);
+        mPresenter.getOfflineMessages();
+
+        ProfileManager.getInstance().init(DataSyncApp.getInstance().getApplicationContext());
+
+        mHandler = new EventHandler(this);
     }
 
     private void registerEventListener() {
@@ -105,26 +113,6 @@ public class ConversationsFragment extends Fragment implements ConversationsView
         EventDispatcher.getInstance().addListener(Event.NEW_PRIVATE_CHAT_MESSAGE_EVENT, mEventListener);
         EventDispatcher.getInstance().addListener(Event.DELETED_CONVERSATION, mEventListener);
         EventDispatcher.getInstance().addListener(Event.SYNC_OFFLINE_MESSAGES_COMPLETED, mEventListener);
-    }
-
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_conversation_home, container, false);
-        mUnbinder = ButterKnife.bind(this, view);
-        mPresenter.attachView(this);
-        return view;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        initConversationList();
-
-        ProfileManager.getInstance().init(DataSyncApp.getInstance().getApplicationContext());
-
-        mPresenter.getOfflineMessages();
     }
 
     @Override
@@ -147,7 +135,7 @@ public class ConversationsFragment extends Fragment implements ConversationsView
     }
 
     @Override
-    public void onDestroyView() {
+    public void onDestroy() {
         mPresenter.detachView();
 
         if (mUnbinder != null) {
@@ -158,13 +146,6 @@ public class ConversationsFragment extends Fragment implements ConversationsView
             DialogUtils.dismiss(mConfirmDeleteDialog);
             mConfirmDeleteDialog = null;
         }
-
-        super.onDestroyView();
-    }
-
-    @Override
-    public void onDestroy() {
-        unregisterEventListener();
 
         super.onDestroy();
     }
@@ -202,14 +183,9 @@ public class ConversationsFragment extends Fragment implements ConversationsView
     }
 
     private void createListAdapter() {
-        mAdapter = new ConversationAdapter(getContext());
+        mAdapter = new ConversationAdapter(this);
 
-        mAdapter.setConversationClickHandler(conversation -> {
-            Context context = ConversationsFragment.this.getActivity();
-            if (context != null) {
-                context.startActivity(ContactChatActivity.createIntentForActivity(context, conversation));
-            }
-        });
+        mAdapter.setConversationClickHandler(conversation -> startActivity(ContactChatActivity.createIntentForActivity(this, conversation)));
     }
 
     private ItemTouchHelper createItemTouchHelper() {
@@ -248,7 +224,7 @@ public class ConversationsFragment extends Fragment implements ConversationsView
             mAdapter.notifyItemChanged(position);
         };
 
-        mConfirmDeleteDialog = DialogUtils.showConfirmDeleteConversationDialog(getContext(), positiveClickListener, negativeClickListener);
+        mConfirmDeleteDialog = DialogUtils.showConfirmDeleteConversationDialog(this, positiveClickListener, negativeClickListener);
     }
 
     public void setHomeConversations(List<ChatConversation> chatConversations) {
@@ -264,16 +240,16 @@ public class ConversationsFragment extends Fragment implements ConversationsView
      */
     private final static class EventHandler extends Handler {
 
-        private final WeakReference<ConversationsFragment> mRef;
+        private final WeakReference<ConversationsActivity> mRef;
 
-        public EventHandler(ConversationsFragment ref) {
+        public EventHandler(ConversationsActivity ref) {
             super(Looper.getMainLooper());
             mRef = new WeakReference<>(ref);
         }
 
         @Override
         public void handleMessage(Message msg) {
-            ConversationsFragment fragment = mRef.get();
+            ConversationsActivity fragment = mRef.get();
 
             if (fragment == null) {
                 return;

@@ -1,12 +1,10 @@
 package com.vng.datasync.data.remote.websocket;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.vng.datasync.protobuf.ZLive;
-import com.vng.datasync.DataSyncApp;
 import com.vng.datasync.data.remote.DataListener;
-import com.vng.datasync.data.remote.PrivateChatHandler;
+import com.vng.datasync.data.remote.ChatHandler;
 import com.vng.datasync.util.Logger;
 
 import java.lang.ref.WeakReference;
@@ -31,8 +29,7 @@ public final class FakeWebSocketManager implements WebSocketConnection.Connectio
     private Initializer mInitializer;
 
     private FakeWebSocketManager() {
-        Context context = DataSyncApp.getInstance().getApplicationContext();
-        mWebsocketListeners = new WebSocketCompositeListener(new PrivateChatHandler(context));
+        mWebsocketListeners = new WebSocketCompositeListener();
     }
 
     public static FakeWebSocketManager getInstance() {
@@ -119,6 +116,13 @@ public final class FakeWebSocketManager implements WebSocketConnection.Connectio
     @Override
     public boolean isConnected() {
         return true;
+    }
+
+    @Override
+    public void setChatHandler(ChatHandler handler) {
+        if (mWebsocketListeners != null) {
+            mWebsocketListeners.setChatHandler(handler);
+        }
     }
 
     /**

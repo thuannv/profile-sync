@@ -1,4 +1,4 @@
-package com.vng.datasync.data.event;
+package com.vng.datasync.event;
 
 /**
  * @author thuannv

@@ -55,7 +55,7 @@ public final class OfflineMessagesSyncJob implements Runnable {
 
             ownerId = msg.getOwnerId();
 
-            final int unread = PrivateChatHandler.isChannelVisible(channelId) ? 0 : 1;
+            final int unread = ChatHandler.isChannelVisible(channelId) ? 0 : 1;
 
             ChatMessage savedMessage;
 
@@ -64,7 +64,7 @@ public final class OfflineMessagesSyncJob implements Runnable {
 
                 if (savedMessage != null
                         && !ChatConversation.isStrangerConversation(chatItem.getChannelType())
-                        && !PrivateChatHandler.isChannelVisible(savedMessage.getChannelId())) {
+                        && !ChatHandler.isChannelVisible(savedMessage.getChannelId())) {
                     createNotification(savedMessage);
                 }
             }

@@ -71,7 +71,7 @@ public final class Logger {
     }
 
     public void w(String fmt, Object... args) {
-        if (isLoggable(TAG, WARN)) {
+        if (ENABLE) {
             Log.w(TAG, format(fmt, args));
         }
     }

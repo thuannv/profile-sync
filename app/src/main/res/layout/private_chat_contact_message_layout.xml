@@ -13,14 +13,14 @@
     android:layout_marginTop="@dimen/private_chat_item_top_spacing">
 
     <!-- Avatar -->
-    <com.vng.live.ui.widget.CircleImageView
+    <com.vng.datasync.ui.widget.CircleImageView
         android:id="@+id/avatar"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_alignParentTop="true"/>
 
     <!-- Content text -->
-    <com.vng.live.ui.widget.CustomFontTextView
+    <com.vng.datasync.ui.widget.CustomFontTextView
         android:id="@+id/message_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
         tools:text="hi there, this is the message you will not see in your ádf ádfasdf adsfasf ádfas dfa ádf ádf adfad adfad adjk adhfkj alds fạdh klfajshdkl ahsfkl hslkd haklsdh kladsh klajhd kldjahsf "/>
 
     <!-- Message created time -->
-    <com.vng.live.ui.widget.CustomFontTextView
+    <com.vng.datasync.ui.widget.CustomFontTextView
         android:id="@+id/message_created_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
