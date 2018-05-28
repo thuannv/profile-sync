@@ -11,7 +11,7 @@ This repository is to demostrate the concepts, workflow and architecture we are 
   
 ## License
 
-    Copyright (C) 2018 thuannv
+    Copyright (C) 2018 thuannv, namnt
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
