@@ -1,5 +1,4 @@
-
-# Demo for 360Live Tech Sharing - Syncing Chat Profiles in 360Live
+# Demo for 360Live Tech Sharing - [Syncing Chat Profiles in 360Live](https://www.slideshare.net/NguyenVanThuan1/360live-tech-sharing-profile-sync)  
 This repository is to demostrate the concepts, workflow and architecture we are currently using in 360Live application. Its purpose is to demo the concepts only. Therefore, we have faked some stuffs, such as WebSocket, REST API for easier to demo with standalone application.  
 
 # Overall Application Architecture
