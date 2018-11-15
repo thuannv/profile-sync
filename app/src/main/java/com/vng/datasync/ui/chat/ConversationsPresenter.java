@@ -2,9 +2,11 @@ package com.vng.datasync.ui.chat;
 
 import com.google.protobuf.ByteString;
 import com.vng.datasync.BuildConfig;
+import com.vng.datasync.Injector;
 import com.vng.datasync.data.remote.Commands;
 import com.vng.datasync.data.remote.MessageHelper;
 import com.vng.datasync.data.remote.websocket.WebSocketManager;
+import com.vng.datasync.data.remote.websocket.WebSocketManagerInf;
 import com.vng.datasync.ui.BasePresenter;
 import com.vng.datasync.util.Logger;
 import com.vng.datasync.util.RxUtils;
@@ -24,12 +26,12 @@ public class ConversationsPresenter extends BasePresenter<ConversationsView> {
 
     private static final Logger L = Logger.getLogger(ConversationsPresenter.class, BuildConfig.DEBUG && DEBUG);
 
-    private final WebSocketManager mConnectionManager;
+    private final WebSocketManagerInf mConnectionManager;
 
     private final CompositeSubscription mCompositeSubscription;
 
     public ConversationsPresenter() {
-        mConnectionManager = WebSocketManager.getInstance();
+        mConnectionManager = Injector.providesWebSocketManager();
 
         mCompositeSubscription = new CompositeSubscription();
     }
